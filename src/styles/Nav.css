@@ -1,0 +1,84 @@
+.navigation {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.nav-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-brand {
+  font-size: large;
+  order: 0;
+  padding: 0.5rem;
+}
+
+.nav-item {
+  font-size: large;
+  order: 1;
+  padding: 0.5rem;
+}
+
+.nav-brand {
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav-searchbar {
+  min-width: 300px;
+  padding: 0.5rem 1rem;
+  font-size: medium;
+  border-radius: 0.1rem;
+  border: 0px;
+}
+
+.nav-searchbar:focus {
+  border-radius: 0.1rem;
+  border: 0px;
+  outline: none;
+}
+
+.header-btn {
+  border: 1px solid red;
+}
+
+.link {
+  text-decoration: none;
+  padding: 0;
+  color: inherit;
+}
+
+.nav-item > .btn-login {
+  padding: 0.2rem 1.2rem;
+  font-size: medium;
+  font-weight: bold;
+  border-radius: 0.1rem;
+  border: 1px solid var(--color-white);
+  background-color: var(--color-white);
+  color: var(--color-primary);
+}
+
+.nav-item > .btn-cart {
+  padding: 0.2rem 1.2rem;
+  font-size: medium;
+  font-weight: bold;
+  border-radius: 0.1rem;
+  border: 1px solid var(--color-primary);
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.btn-login:hover {
+  border: 1px solid var(--color-white);
+  opacity: 0.9;
+}
+
+.btn-secondary:hover {
+  color: #fff;
+  background-color: var(--color-primary);
+}
