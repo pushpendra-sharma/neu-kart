@@ -1,0 +1,83 @@
+.container-login {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: stretch;
+  gap: 2rem;
+}
+
+.login-desc {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1rem;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.login-desc > h2 {
+  font-weight: bold;
+}
+
+.login-form {
+  display: flex;
+  padding: 2rem;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: stretch;
+  gap: 1rem;
+}
+
+.input-email {
+  min-width: 300px;
+  padding: 0.5rem 1rem;
+  font-size: medium;
+  border-radius: 0.1rem;
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+  border-bottom: 1px solid var(--color-text-grey);
+}
+
+.input-email:focus {
+  border-radius: 0.1rem;
+  border-bottom: 2px solid var(--color-primary);
+  outline: none;
+}
+
+.btn-login {
+  padding: 1rem;
+  font-size: medium;
+  font-weight: bold;
+  border-radius: 0.1rem;
+  border: 1px solid var(--color-orange);
+  background-color: var(--color-orange);
+  color: var(--color-white);
+}
+
+.forgot-password {
+  padding: 0.5rem;
+  text-decoration: none;
+  font-size: medium;
+
+  color: var(--color-primary);
+}
+
+.terms {
+  padding: 0.5rem;
+  text-decoration: none;
+  font-size: small;
+}
+
+.signup {
+  padding: 0.5rem;
+  text-decoration: none;
+  font-size: medium;
+  color: var(--color-primary);
+}
