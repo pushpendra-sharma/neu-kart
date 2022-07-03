@@ -3,7 +3,7 @@
   background-color: var(--color-light-black);
   padding: 2rem;
   text-align: center;
-  position: fixed;
+  /* position: fixed; */
   bottom: 0;
 }
 
@@ -24,6 +24,7 @@
   gap: 5px;
   align-items: flex-start;
   align-content: stretch;
+  font-size: small;
 }
 
 .footer-desc {
