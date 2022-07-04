@@ -1,0 +1,20 @@
+.products-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 0.1rem;
+}
+
+.products-filtered {
+  padding: 2rem;
+  margin: 1rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: stretch;
+  gap: 0.5rem;
+  box-shadow: 1px 1px 5px rgb(0 0 0 / 0.2);
+}

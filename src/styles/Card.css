@@ -1,0 +1,70 @@
+.card {
+  text-decoration: none;
+  max-width: 10rem;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.card-desc{
+  font-size: small;
+  color:var(--color-text-grey)
+}
+
+.card-img > .card-photo {
+  width: 100%;
+  display: block;
+  margin: auto;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  border: 1px solid black;
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.item-price {
+  display: flex;
+  gap: 10px;
+}
+
+.item-price-display {
+  font-size: small;
+}
+
+.item-price-mrp {
+  text-decoration: line-through;
+}
+
+.discount {
+  color: var(--color-green);
+  font-size: small;
+  font-weight: bold;
+}
+
+.strike-price{
+  text-decoration: line-through;
+}
+
+.card-footer {
+  padding: 1rem 0;
+}
+
+.card-btn {
+  padding: 0.5rem;
+  font-size: medium;
+  font-weight: bold;
+  border-radius: 0.1rem;
+  color: var(--color-white);
+  text-decoration: none;
+}
+
+.add-cart-btn {
+  background-color: var(--color-yellow);
+}
+
+.buy-now-btn {
+  background-color: var(--color-orange);
+}
