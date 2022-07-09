@@ -2,18 +2,22 @@ import CheckBox from './CheckBox';
 import InputRange from './InputRange';
 import RadioInput from './RadioInput';
 import {
-  brands,
   categories,
   discounts,
   customerRatings,
   radioInputOptions,
+  sortOptions,
+  mobileBrands,
+  laptopBrands,
 } from '../mockData';
 import '../styles/Filter.css';
 
 const Filter = () => {
   const handleChange = () => {
-    console.log(':::Filter');
+    console.log(laptopBrands);
   };
+
+  const brands = mobileBrands;
 
   return (
     <div className='filter-nav'>
@@ -49,6 +53,12 @@ const Filter = () => {
         title='AVAILABILITY'
         id='availability'
         options={radioInputOptions}
+        onChange={handleChange}
+      />
+      <RadioInput
+        title='Sort By'
+        id='sort'
+        options={sortOptions}
         onChange={handleChange}
       />
     </div>
