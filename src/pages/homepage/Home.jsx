@@ -2,14 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css';
 
-const imageUrls = {
-  hero: 'https://images-eu.ssl-images-amazon.com/images/G/31/img21/Wireless/katariy/BAU/OP_Dec/D24582943_IN_WL_Category_Page_1500x400.gif',
-  mobile:
-    'https://images.pexels.com/photos/6608247/pexels-photo-6608247.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-  electronics:
-    'https://images.pexels.com/photos/955405/pexels-photo-955405.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-};
-
 const Home = () => {
   return (
     <main className='main-container'>
