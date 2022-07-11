@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import emptyCart from '../../images/emptyCart.webp';
+import emptyImage from '../../images/emptyImage.webp';
 import './Cart.css';
 
 const Cart = () => {
@@ -11,7 +11,7 @@ const Cart = () => {
       </div>
       <div className='empty-cart-body'>
         <div className='cart-img'>
-          <img className='cart-empty-img' src={emptyCart} alt='Empty Cart' />
+          <img className='cart-empty-img' src={emptyImage} alt='Empty Cart' />
         </div>
         <p className='cart-desc'>Your cart is empty!</p>
         <p className='cart-msg'>Add items to it now.</p>
