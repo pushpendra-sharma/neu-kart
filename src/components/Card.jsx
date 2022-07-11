@@ -3,23 +3,33 @@ import PropTypes from 'prop-types';
 import '../styles/Card.css';
 
 const Card = (props) => {
-  const { productName, description, price, discount, rating } = props.data;
+  const {
+    productName,
+    features,
+    offer,
+    description,
+    price,
+    mrp,
+    discount,
+    rating,
+    imageUrl,
+  } = props.data;
   return (
-    <div className='card'>
+    <div className='card-container'>
       <div className='card-wrapper'>
         <div className='card-img'>
-          <img
-            src='https://images.pexels.com/photos/12123389/pexels-photo-12123389.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
-            alt='mobile'
-            className='card-photo'
-          ></img>
+          <img src={imageUrl} alt='mobile' className='card-photo'></img>
         </div>
-        <h3 className='card-main-heading'>{productName}</h3>
+        <h2 className='card-main-heading'>{productName}</h2>
         <p className='card-desc'>{description}</p>
-        <div className='rating'>{rating}</div>
-        <p>₹{price}</p>
-        <p className='strike-price'>₹10000</p>
-        <p className='discount'>{discount}off</p>
+        <div className='rating'>Rating {rating}</div>
+        <p>
+          <span>{price}</span>
+          <span className='strike-price'>{mrp}</span>
+          <span className='discount'>{discount}</span>
+        </p>
+        <p className='features'>{features}</p>
+        <p className='discount'>{offer}</p>
       </div>
       <footer className='card-footer'>
         <Link to='/' className='card-btn add-cart-btn'>
@@ -34,12 +44,10 @@ const Card = (props) => {
 };
 
 Card.propTypes = {
-  name: PropTypes.string,
+  data: PropTypes.object,
 };
 
 Card.defaultProps = {
-  name: 'Rahul',
-  eyeColor: 'deepblue',
-  age: '45',
+  data: {},
 };
 export default Card;
