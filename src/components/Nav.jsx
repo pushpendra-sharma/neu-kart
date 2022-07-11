@@ -1,7 +1,11 @@
 import { Link } from 'react-router-dom';
 import '../styles/Nav.css';
+import { useSelector } from 'react-redux';
+import {loginSelector, userNameSelector } from '../redux/selectors';
 
 const Nav = () => {
+  const loginCheck = useSelector(loginSelector);
+  const userName = useSelector(userNameSelector);
   return (
     <>
       <nav className='navigation nav-container'>
@@ -16,11 +20,17 @@ const Nav = () => {
             placeholder='Search for products, brands and more'
           />
         </div>
-        <div className='nav-item'>
-          <Link className='link btn-login' to='/login'>
-            Login
-          </Link>
-        </div>
+        {loginCheck ? (
+          <div className='nav-item'>
+            Hi, {userName}
+          </div>
+        ) : (
+          <div className='nav-item'>
+            <Link className='link btn-login' to='/login'>
+              Login
+            </Link>
+          </div>
+        )}
         <div className='nav-item'>
           <Link className='link btn-cart' to='/cart'>
             Cart
