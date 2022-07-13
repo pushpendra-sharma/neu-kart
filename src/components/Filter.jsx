@@ -8,15 +8,10 @@ import {
   radioInputOptions,
   sortOptions,
   mobileBrands,
-  laptopBrands,
 } from '../mockData';
 import '../styles/Filter.css';
 
 const Filter = () => {
-  const handleChange = () => {
-    console.log(laptopBrands);
-  };
-
   const brands = mobileBrands;
 
   return (
@@ -24,43 +19,17 @@ const Filter = () => {
       <div className='filter-container'>
         <h3 className='filter-heading'>Filters</h3>
       </div>
-      <CheckBox
-        title='Category'
-        id='ratings'
-        options={categories}
-        onChange={handleChange}
-      />
-      <InputRange title='PRICE' />
-      <CheckBox
-        title='BRAND'
-        id='brand'
-        options={brands}
-        onChange={handleChange}
-      />
-      <CheckBox
-        title='RATING'
-        id='rating'
-        options={customerRatings}
-        onChange={handleChange}
-      />
-      <CheckBox
-        title='Discounts'
-        id='discounts'
-        options={discounts}
-        onChange={handleChange}
-      />
+      <CheckBox title='Category' id='category' options={categories} />
+      <InputRange title='PRICE' id='price' />
+      <CheckBox title='BRAND' id='brand' options={brands} />
+      <CheckBox title='RATING' id='rating' options={customerRatings} />
+      <CheckBox title='Discounts' id='discount' options={discounts} />
       <RadioInput
         title='AVAILABILITY'
         id='availability'
         options={radioInputOptions}
-        onChange={handleChange}
       />
-      <RadioInput
-        title='Sort By'
-        id='sort'
-        options={sortOptions}
-        onChange={handleChange}
-      />
+      <RadioInput title='Sort By' id='sort' options={sortOptions} />
     </div>
   );
 };

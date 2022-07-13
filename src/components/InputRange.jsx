@@ -1,8 +1,19 @@
 import PropTypes from 'prop-types';
 
+import { useEffect, useState } from 'react';
+
+import { useDispatch } from 'react-redux';
+import { filterByPrice } from '../redux/features/productSlice';
 import '../styles/Filter.css';
-const InputRange = (props) => {
-  const { minimum, maximum, step, title, onChange } = props;
+const InputRange = props => {
+  const { minimum, maximum, step, title, id } = props;
+
+  const [value, setvalue] = useState();
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (id === 'price') dispatch(filterByPrice(value));
+  }, [dispatch, id, value]);
 
   return (
     <div className='filter-container'>
@@ -19,7 +30,8 @@ const InputRange = (props) => {
         min={minimum}
         max={maximum}
         step={step}
-        onChange={onChange}
+        onChange={e => setvalue(e.target.value)}
+        value={value}
       />
     </div>
   );

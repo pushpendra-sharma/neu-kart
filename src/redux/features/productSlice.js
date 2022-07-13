@@ -5,6 +5,16 @@ const initialProductState = {
   loading: false,
   items: [],
   error: '',
+  sortBy: '',
+  filterBy: {
+    category: ['Mobile', 'Laptop'],
+    brand: [],
+    availability: '',
+    price: '',
+    rating: [],
+    discount: [],
+  },
+  filterdItems: [],
 };
 
 export const fetchProducts = createAsyncThunk(
@@ -22,6 +32,29 @@ export const fetchProducts = createAsyncThunk(
 const productSlice = createSlice({
   name: 'products',
   initialState: initialProductState,
+  reducers: {
+    filterByCategory: (state, action) => {
+      state.filterBy.category = action.payload;
+    },
+    filterByBrand: (state, action) => {
+      state.filterBy.brand = action.payload;
+    },
+    filterByAvailability: (state, action) => {
+      state.filterBy.availability = action.payload;
+    },
+    filterByPrice: (state, action) => {
+      state.filterBy.price = action.payload;
+    },
+    filterByRating: (state, action) => {
+      state.filterBy.rating = action.payload;
+    },
+    filterByDiscount: (state, action) => {
+      state.filterBy.discount = action.payload;
+    },
+    sortBy: (state, action) => {
+      state.sortBy = action.payload;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(fetchProducts.pending, state => {
@@ -38,5 +71,15 @@ const productSlice = createSlice({
       });
   },
 });
+
+export const {
+  filterByCategory,
+  filterByBrand,
+  filterByAvailability,
+  filterByPrice,
+  filterByRating,
+  filterByDiscount,
+  sortBy,
+} = productSlice.actions;
 
 export default productSlice.reducer;

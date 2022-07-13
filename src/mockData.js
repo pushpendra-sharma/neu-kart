@@ -1,17 +1,17 @@
 const mobileBrands = [
-  { label: 'Apple', value: 'apple' },
-  { label: 'Redmi', value: 'redmi' },
-  { label: 'Oppo', value: 'oppo' },
-  { label: 'Samsung', value: 'samsung' },
+  { label: 'Apple', value: 'Apple' },
+  { label: 'Redmi', value: 'Xiaomi' },
+  { label: 'Oppo', value: 'Oppo' },
+  { label: 'Samsung', value: 'Samsung' },
 ];
 const laptopBrands = [
-  { label: 'HP', value: 'hp' },
-  { label: 'Dell', value: 'dell' },
-  { label: 'Lenevo', value: 'lenovo' },
+  { label: 'HP', value: 'HP' },
+  { label: 'Dell', value: 'Dell' },
+  { label: 'Lenevo', value: 'Lenevo' },
 ];
 const categories = [
-  { label: 'Mobile', value: 'mobile' },
-  { label: 'Laptop', value: 'laptop' },
+  { label: 'Mobile', value: 'Mobile' },
+  { label: 'Laptop', value: 'Laptop' },
 ];
 const customerRatings = [
   { label: '5 & above', value: '5' },
@@ -27,8 +27,8 @@ const discounts = [
 ];
 
 const radioInputOptions = [
-  { label: 'Available', value: 'available' },
-  { label: 'Include out of stock', value: 'stockOut' },
+  { label: 'Available', value: true },
+  { label: 'Include out of stock', value: false },
 ];
 const sortOptions = [
   { label: 'High to Low', value: 'highToLow' },
