@@ -38,6 +38,7 @@ const sortOptions = [
 
 const products = [
   {
+    productId: 'P-001',
     productName: 'Apple iPhone 12',
     description: 'A14 Bionic Chip | 128GB ROM',
     category: 'Mobile',
@@ -53,6 +54,7 @@ const products = [
       'https://rukminim1.flixcart.com/image/312/312/kg8avm80/mobile/r/h/z/apple-iphone-12-dummyapplefsn-original-imafwg8duby8qbn4.jpeg?q=70',
   },
   {
+    productId: 'P-002',
     productName: 'Apple iPhone 12 Pro',
     description: 'A14 Bionic Chip | 512GB ROM',
     category: 'Mobile',
@@ -68,6 +70,7 @@ const products = [
       'https://rukminim1.flixcart.com/image/312/312/kg8avm80/mobile/s/9/w/apple-iphone-12-pro-dummyapplefsn-original-imafwgbrnpyygbv9.jpeg?q=70',
   },
   {
+    productId: 'P-003',
     productName: 'Apple iPhone 12 Mini',
     description: 'A14 Bionic Chip | 128GB ROM',
     category: 'Mobile',
@@ -83,6 +86,7 @@ const products = [
       'https://rukminim1.flixcart.com/image/312/312/kg8avm80/mobile/h/v/w/apple-iphone-12-mini-dummyapplefsn-original-imafwgb2zkjcwpre.jpeg?q=70',
   },
   {
+    productId: 'P-004',
     productName: 'Apple iPhone 11',
     description: 'A13 Bionic Chip | 64GB ROM',
     category: 'Mobile',
@@ -98,6 +102,7 @@ const products = [
       'https://rukminim1.flixcart.com/image/312/312/k2jbyq80pkrrdj/mobile-refurbished/k/y/d/iphone-11-256-u-mwm82hn-a-apple-0-original-imafkg25mhaztxns.jpeg?q=70',
   },
   {
+    productId: 'P-005',
     productName: 'Apple iPhone 13',
     description: 'A15 Bionic Chip | 128GB ROM',
     category: 'Mobile',
@@ -113,6 +118,7 @@ const products = [
       'https://rukminim1.flixcart.com/image/312/312/ktketu80/mobile/2/y/o/iphone-13-mlpk3hn-a-apple-original-imag6vpyur6hjngg.jpeg?q=70',
   },
   {
+    productId: 'P-006',
     productName: 'Apple iPhone 13 Pro Max',
     description: 'A15 Bionic Chip | 128GB ROM',
     category: 'Mobile',
@@ -128,6 +134,7 @@ const products = [
       'https://rukminim1.flixcart.com/image/312/312/ktketu80/mobile/c/g/4/iphone-13-pro-max-mlll3hn-a-apple-original-imag6vpg3r7dyvhm.jpeg?q=70',
   },
   {
+    productId: 'P-007',
     productName: 'Samsung Galaxy F12',
     description: '4GB RAM | 64GB ROM',
     category: 'Mobile',
@@ -143,6 +150,7 @@ const products = [
       'https://rukminim1.flixcart.com/image/312/312/kn22m4w0/mobile/9/k/s/galaxy-f12-sm-f127glbiins-samsung-original-imagftmhhhvghq7w.jpeg?q=70',
   },
   {
+    productId: 'P-008',
     productName: 'Samsung Galaxy F23',
     description: '6GB RAM | 128GB ROM',
     category: 'Mobile',
@@ -158,6 +166,7 @@ const products = [
       'https://rukminim1.flixcart.com/image/312/312/l0sgyvk0/mobile/f/v/c/-original-imagcg22pf79cgau.jpeg?q=70',
   },
   {
+    productId: 'P-009',
     productName: 'Samsung Galaxy S21 Ultra',
     description: '12GB RAM | 256GB ROM',
     category: 'Mobile',
@@ -173,6 +182,7 @@ const products = [
       'https://rukminim1.flixcart.com/image/312/312/kjvrdzk0/mobile/t/x/3/samsung-galaxy-s21-ultra-sm-g998bzkginu-original-imafzcm2vacyygnb.jpeg?q=70',
   },
   {
+    productId: 'P-010',
     productName: 'Samsung Galaxy M33 5G',
     description: '6GB RAM | 128GB ROM',
     category: 'Mobile',
@@ -188,6 +198,7 @@ const products = [
       'https://rukminim1.flixcart.com/image/312/312/l1v1uvk0/mobile/t/d/x/galaxy-m33-5g-sm-m336bzbpins-samsung-original-imagdc87gdyremd3.jpeg?q=70',
   },
   {
+    productId: 'P-011',
     productName: 'Samsung Galaxy M52 5G',
     description: '8GB RAM | 128GB ROM',
     category: 'Mobile',
@@ -203,6 +214,7 @@ const products = [
       'https://rukminim1.flixcart.com/image/312/312/kulk9zk0/mobile/j/b/0/galaxy-m52-5g-sm-m526blbhinu-samsung-original-imag7zx66vpkp9mg.jpeg?q=70',
   },
   {
+    productId: 'P-012',
     productName: 'Xiaomi 12 Pro 5G',
     description: '12GB RAM | 256GB ROM',
     category: 'Mobile',
@@ -218,6 +230,7 @@ const products = [
       'https://rukminim1.flixcart.com/image/312/312/l2p23rk0/mobile/b/n/9/12-pro-5g-2201122g-mi-original-imagdz7rs8qfakcb.jpeg?q=70',
   },
   {
+    productId: 'P-013',
     productName: 'Redmi 9A Sport',
     description: '3GB RAM | 32GB ROM',
     category: 'Mobile',
@@ -233,6 +246,7 @@ const products = [
       'https://rukminim1.flixcart.com/image/312/312/kuef2q80/mobile/w/j/r/redmi-9a-sport-9a-mi-original-imag7gy6tzuz3hk8.jpeg?q=70',
   },
   {
+    productId: 'P-014',
     productName: 'Xiaomi 11i 5G',
     description: '6GB RAM | 128GB ROM',
     category: 'Mobile',
@@ -248,6 +262,7 @@ const products = [
       'https://rukminim1.flixcart.com/image/312/312/ky7lci80/mobile/4/n/d/-original-imagag2gdzpdfsdf.jpeg?q=70',
   },
   {
+    productId: 'P-015',
     productName: 'Redmi Note 9 Pro',
     description: '4GB RAM | 128GB ROM',
     category: 'Mobile',
@@ -263,6 +278,7 @@ const products = [
       'https://rukminim1.flixcart.com/image/312/312/kcdp5zk0/mobile/6/e/k/mi-redmi-note-9-pro-mzb9105in-original-imaftgy6gwe9vnqr.jpeg?q=70',
   },
   {
+    productId: 'P-016',
     productName: 'Redmi K20',
     description: '6GB RAM | 64GB ROM',
     category: 'Mobile',
@@ -278,6 +294,7 @@ const products = [
       'https://rukminim1.flixcart.com/image/312/312/jxz0brk0/mobile/7/b/a/redmi-k20-na-original-imafgb4xesjtrzuu.jpeg?q=70',
   },
   {
+    productId: 'P-017',
     productName: 'Oppo Find X',
     description: '8GB RAM | 256GB ROM',
     category: 'Mobile',
@@ -293,6 +310,7 @@ const products = [
       'https://rukminim1.flixcart.com/image/312/312/jjg15zk0/mobile/s/p/d/oppo-find-x-cph1871-original-imaf7ywhqmckb6w9.jpeg?q=70',
   },
   {
+    productId: 'P-018',
     productName: 'Oppo F21 Pro 5G',
     description: '8GB RAM | 128GB ROM',
     category: 'Mobile',
@@ -308,6 +326,7 @@ const products = [
       'https://rukminim1.flixcart.com/image/312/312/l1zc6fk0/mobile/7/z/w/f21-pro-5g-cph2341-oppo-original-imagdf4gnjyayyvs.jpeg?q=70',
   },
   {
+    productId: 'P-019',
     productName: 'Oppo A16k',
     description: '3GB RAM | 32GB ROM',
     category: 'Mobile',
@@ -323,6 +342,7 @@ const products = [
       'https://rukminim1.flixcart.com/image/312/312/kyg5zm80/mobile/n/y/9/-original-imagazh6fmxqpc4m.jpeg?q=70',
   },
   {
+    productId: 'P-020',
     productName: 'HP core i3 11th Gen',
     description: '8GB/256GB SSD/Windows 11 Home',
     category: 'Laptop',
@@ -338,6 +358,7 @@ const products = [
       'https://rukminim1.flixcart.com/image/312/312/l0zm64w0/computer/k/h/m/14s-dq2606tu-thin-and-light-laptop-hp-original-imagcnsfnrzvzbs6.jpeg?q=70',
   },
   {
+    productId: 'P-021',
     productName: 'HP core i5 11th Gen',
     description: '8GB/512GB SSD/Windows 11 Home',
     category: 'Laptop',
@@ -353,6 +374,7 @@ const products = [
       'https://rukminim1.flixcart.com/image/312/312/l2jcccw0/computer/s/k/0/-original-imagdus5mrsgjepa.jpeg?q=70',
   },
   {
+    productId: 'P-022',
     productName: 'HP 14s Core i& 10th Gen',
     description: '8GB/512GB SSD/Windows 10 Home',
     category: 'Laptop',
@@ -368,6 +390,7 @@ const products = [
       'https://rukminim1.flixcart.com/image/312/312/kbqu4cw0/computer/v/r/y/hp-original-imaftyzqzbyerzgt.jpeg?q=70',
   },
   {
+    productId: 'P-023',
     productName: 'HP Pvilion x360 convertible',
     description: '16GB/512GB SSD/Intel core i7 11th Gen',
     category: 'Laptop',
@@ -383,6 +406,7 @@ const products = [
       'https://rukminim1.flixcart.com/image/312/312/kwcfngw0/computer/y/q/d/-original-imag9fgxy7mjf4zd.jpeg?q=70',
   },
   {
+    productId: 'P-024',
     productName: 'Dell Inspiron Core i3 10th Gen',
     description: '8GB/256GB SSD/Windows 11 Home',
     category: 'Laptop',
@@ -398,6 +422,7 @@ const products = [
       'https://rukminim1.flixcart.com/image/312/312/kt8zb0w0/computer/n/m/v/inspiron-3511-thin-and-light-laptop-dell-original-imag6n5kbmfcgxk6.jpeg?q=70',
   },
   {
+    productId: 'P-025',
     productName: 'Dell Core i7 11th Gen',
     description: '16GB/512GB SSD/Windows 11 Home',
     category: 'Laptop',
@@ -413,6 +438,7 @@ const products = [
       'https://rukminim1.flixcart.com/image/312/312/kqb8pzk0/computer/d/j/c/na-2-in-1-laptop-dell-original-imag4dy68bwtg8j9.jpeg?q=70',
   },
   {
+    productId: 'P-026',
     productName: 'Dell Inspiron Core i5 11th Gen',
     description: '8GB/1TB HDD/256 GB SSD',
     category: 'Laptop',
@@ -428,6 +454,7 @@ const products = [
       'https://rukminim1.flixcart.com/image/312/312/kxm5qq80/computer/i/s/2/na-laptop-dell-original-imagayta7txhw4ch.jpeg?q=70',
   },
   {
+    productId: 'P-027',
     productName: 'Lenevo IdeaPad Slim 5i Core i5 11th Gen',
     description: '16GB/512GB SSD/2 GB Graphics',
     category: 'Laptop',
@@ -443,6 +470,7 @@ const products = [
       'https://rukminim1.flixcart.com/image/312/312/klfhk7k0/computer/w/u/x/na-thin-and-light-laptop-lenovo-original-imagyk4hedcydqx5.jpeg?q=70',
   },
   {
+    productId: 'P-028',
     productName: 'Lenevo IdeaPad 3 Core i3 11th Gen',
     description: '8GB/256GB SSD/Windows 11 Home',
     category: 'Laptop',
@@ -458,6 +486,7 @@ const products = [
       'https://rukminim1.flixcart.com/image/312/312/keaaavk0/computer/c/q/t/lenovo-na-thin-and-light-laptop-original-imafuzt873zgp9xe.jpeg?q=70',
   },
   {
+    productId: 'P-029',
     productName: 'Lenevo Yoga Intel EVO Core i7 11th Gen',
     description: '16GB/1TB SSD/Windows 10 Home',
     category: 'Laptop',
