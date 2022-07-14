@@ -17,10 +17,11 @@
   display: block;
   margin: auto;
   position: relative;
+  margin-bottom: 0.5rem;
 }
 
 .card-img > .card-photo {
-  height: 100%;
+  width: 100%;
 }
 
 .wishlist-icon {
@@ -46,9 +47,12 @@
   align-items: flex-start;
   border: 1px solid black;
   padding: 1rem;
-  min-width: 10rem;
-  max-width: 20rem;
+  width: 18rem;
   gap: 0.4rem;
+}
+
+.card-container:hover > .card-main-heading {
+  color: var(--color-primary);
 }
 
 .item-price {
@@ -92,8 +96,14 @@
 .add-cart-btn {
   background-color: var(--color-yellow);
   border: 0px;
+  cursor: pointer;
 }
 
 .go-cart-btn {
   background-color: var(--color-orange);
+}
+
+.delete-icon {
+  cursor: pointer;
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48;
 }

@@ -51,7 +51,7 @@ const Card = props => {
           </span>
         )}
       </div>
-      <h2 className='card-main-heading'>{productName}</h2>
+      <h3 className='card-main-heading'>{productName}</h3>
       <p className='card-desc'>{description}</p>
       <div className='rating'>Rating {rating}</div>
       <p>
