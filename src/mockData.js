@@ -175,7 +175,7 @@ const products = [
     mrp: '₹128999',
     discount: '17% off',
     offer: 'No Cost EMI on SBI card payment',
-    features: '108MP + 12MP + 10MP + 10MP | 40MP Front Camera',
+    features: 'Best Rear & Front Camera',
     availability: true,
     rating: '4.9',
     imageUrl:
@@ -207,7 +207,7 @@ const products = [
     mrp: '₹34990',
     discount: '28% off',
     offer: 'Bank Offer',
-    features: 'Qualcomm SM7325 Snapdragon Processor',
+    features: 'Qualcomm SM7325 Processor',
     availability: true,
     rating: '3.6',
     imageUrl:
@@ -223,7 +223,7 @@ const products = [
     mrp: '₹70874',
     discount: '5% off',
     offer: 'Bank Offer',
-    features: 'Snapdragon @ 8 Gen Processor',
+    features: 'Qualcomm @8 Gen Processor',
     availability: true,
     rating: '4.6',
     imageUrl:
