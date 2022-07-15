@@ -3,7 +3,6 @@ import './Wishlist.css';
 import { useSelector } from 'react-redux';
 import { wishListItemsSelector } from '../../redux/selectors';
 import Card from '../../components/Card';
-import 'react-toastify/dist/ReactToastify.css';
 import { products } from '../../mockData';
 
 const WishList = () => {
