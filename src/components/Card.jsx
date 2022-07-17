@@ -8,6 +8,7 @@ import {
   removeFromWishlistAction,
 } from '../redux/features/wishListSlice';
 import { addToCartAction } from '../redux/features/cartSlice';
+import { toast } from 'react-toastify';
 
 const Card = props => {
   const {
@@ -36,6 +37,7 @@ const Card = props => {
             className='material-symbols-outlined wishlist-icon-active'
             onClick={() => {
               dispatch(removeFromWishlistAction(productId));
+              toast.success('Item removed from Wishlist');
             }}
           >
             favorite
@@ -45,6 +47,7 @@ const Card = props => {
             className='material-symbols-outlined wishlist-icon'
             onClick={() => {
               dispatch(addToWishlistAction(productId));
+              toast.success('Item added to Wishlist');
             }}
           >
             favorite
@@ -70,6 +73,7 @@ const Card = props => {
           className='card-btn add-cart-btn'
           onClick={() => {
             dispatch(addToCartAction(productId));
+            toast.success("Item added to Cart")
           }}
         >
           Add to Cart

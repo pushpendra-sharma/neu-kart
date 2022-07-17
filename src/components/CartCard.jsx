@@ -3,6 +3,7 @@ import '../styles/Card.css';
 import { useDispatch } from 'react-redux';
 
 import { removeFromCartAction } from '../redux/features/cartSlice';
+import { toast } from 'react-toastify';
 
 const CartCard = props => {
   const {
@@ -38,6 +39,7 @@ const CartCard = props => {
         className='material-symbols-outlined delete-icon'
         onClick={() => {
           dispatch(removeFromCartAction(productId));
+          toast.success('Item removed from Cart');
         }}
       >
         delete
