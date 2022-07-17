@@ -1,5 +1,5 @@
 .filter-nav {
-  padding: 2rem;
+  padding: 1.5rem;
   margin: 1rem;
   display: flex;
   flex-direction: column;
@@ -8,6 +8,7 @@
   align-items: stretch;
   gap: 1rem;
   box-shadow: 1px 1px 5px rgb(0 0 0 / 0.2);
+  min-width: 16rem;
 }
 
 .filter-container {

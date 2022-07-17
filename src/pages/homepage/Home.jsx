@@ -26,7 +26,7 @@ const Home = () => {
       </header>
 
       <div className='main-item'>
-        <Link to='/products' className='section'>
+        <Link to='/products/Mobile' className='section'>
           <img
             src='https://images.pexels.com/photos/404280/pexels-photo-404280.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
             alt='mobile'
@@ -36,7 +36,7 @@ const Home = () => {
           <p className='section-offer'>upto 20% off</p>
         </Link>
 
-        <Link to='/products' className='section'>
+        <Link to='/products/Laptop' className='section'>
           <img
             src='https://images.pexels.com/photos/955405/pexels-photo-955405.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
             alt='electronics'

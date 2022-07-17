@@ -55,8 +55,8 @@ const Card = props => {
       <p className='card-desc'>{description}</p>
       <div className='rating'>Rating {rating}</div>
       <p>
-        <span>{price}</span>
-        <span className='strike-price'>{mrp}</span>
+        <span>₹{price}</span>
+        <span className='strike-price'>₹{mrp}</span>
         <span className='discount'>{discount}</span>
       </p>
       <p className='features'>{features}</p>

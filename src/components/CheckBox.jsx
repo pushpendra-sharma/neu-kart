@@ -29,7 +29,6 @@ const CheckBox = props => {
     if (id === 'rating') dispatch(filterByRating(values));
   }, [dispatch, id, values]);
 
-  console.log(':::values', values);
   return (
     <div className='filter-container'>
       <p className='filter-criteria-title-container'>
