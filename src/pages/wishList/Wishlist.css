@@ -42,3 +42,12 @@
   margin: 1rem;
 }
 
+.non-empty-wishList-body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: stretch;
+  gap: 0.5rem 1rem;
+}

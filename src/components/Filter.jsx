@@ -10,27 +10,39 @@ import {
   mobileBrands,
 } from '../mockData';
 import '../styles/Filter.css';
+import { useState } from 'react';
 
 const Filter = () => {
   const brands = mobileBrands;
 
+  const [active, setActive] = useState(true);
+
   return (
-    <div className='filter-nav'>
-      <div className='filter-container'>
-        <h3 className='filter-heading'>Filters</h3>
+    <>
+      <div className='filter-nav'>
+        <div className='filter-heading-container'>
+          <h3 className='filter-heading'>Filters</h3>
+          <span className='toggle-filter' onClick={() => setActive(!active)}>
+            Show/Hide
+          </span>
+        </div>
+        {active && (
+          <>
+            <CheckBox title='Category' id='category' options={categories} />
+            <InputRange title='PRICE' id='price' />
+            <CheckBox title='BRAND' id='brand' options={brands} />
+            <CheckBox title='RATING' id='rating' options={customerRatings} />
+            <CheckBox title='Discounts' id='discount' options={discounts} />
+            <RadioInput
+              title='AVAILABILITY'
+              id='availability'
+              options={radioInputOptions}
+            />
+            <RadioInput title='Sort By' id='sort' options={sortOptions} />
+          </>
+        )}
       </div>
-      <CheckBox title='Category' id='category' options={categories} />
-      <InputRange title='PRICE' id='price' />
-      <CheckBox title='BRAND' id='brand' options={brands} />
-      <CheckBox title='RATING' id='rating' options={customerRatings} />
-      <CheckBox title='Discounts' id='discount' options={discounts} />
-      <RadioInput
-        title='AVAILABILITY'
-        id='availability'
-        options={radioInputOptions}
-      />
-      <RadioInput title='Sort By' id='sort' options={sortOptions} />
-    </div>
+    </>
   );
 };
 

@@ -1,3 +1,17 @@
+@media screen and (min-width: 768px) {
+  .toggle-filter {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .toggle-filter {
+    display: inline;
+    font-size: small;
+    cursor: pointer;
+  }
+}
+
 .filter-nav {
   padding: 1.5rem;
   margin: 1rem;
@@ -14,6 +28,17 @@
 .filter-container {
   display: flex;
   flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 1rem;
+  padding: 0 0 1rem 0;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.filter-heading-container {
+  display: flex;
+  flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: stretch;
