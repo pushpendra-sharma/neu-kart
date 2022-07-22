@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import './Login.css';
+import './Auth.css';
 import { useDispatch } from 'react-redux';
-import { loginUser } from '../../redux/features/userSlice';
+import { toast } from 'react-toastify';
+import { loginUser } from '../../redux/features/authSlice';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -20,7 +21,7 @@ const Login = () => {
     e.preventDefault();
     dispatch(loginUser(userCredentials))
       .then(() => {
-        navigate('/');
+        toast.success('Login successfull!');
       })
       .catch(err => {
         console.log(err);
@@ -37,6 +38,7 @@ const Login = () => {
       })
     )
       .then(() => {
+        toast.success('Login successfull!');
         navigate('/');
       })
       .catch(err => {
@@ -53,14 +55,14 @@ const Login = () => {
         </section>
         <section className='login-form'>
           <input
-            className='input-email'
+            className='input-form'
             type='email'
             placeholder='Enter Email'
             onChange={e => setEmail(e.target.value)}
             value={email}
           ></input>
           <input
-            className='input-email'
+            className='input-form'
             type='password'
             placeholder='Enter Password'
             onChange={e => setPassword(e.target.value)}

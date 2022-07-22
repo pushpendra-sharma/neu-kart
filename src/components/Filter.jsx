@@ -22,9 +22,21 @@ const Filter = () => {
       <div className='filter-nav'>
         <div className='filter-heading-container'>
           <h3 className='filter-heading'>Filters</h3>
-          <span className='toggle-filter' onClick={() => setActive(!active)}>
-            Show/Hide
-          </span>
+          {active ? (
+            <span
+              class='material-symbols-outlined toggle-filter'
+              onClick={() => setActive(!active)}
+            >
+              expand_less
+            </span>
+          ) : (
+            <span
+              class='material-symbols-outlined toggle-filter'
+              onClick={() => setActive(!active)}
+            >
+              expand_more
+            </span>
+          )}
         </div>
         {active && (
           <>
