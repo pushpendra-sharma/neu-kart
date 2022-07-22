@@ -16,7 +16,7 @@
 }
 
 .main-header-item > .hero-img {
-  width: 70%;
+  width: 80%;
   display: block;
   margin: auto;
 }
@@ -35,7 +35,7 @@
 
 .section {
   text-decoration: none;
-  max-width: 25rem;
+  width: 20rem;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
