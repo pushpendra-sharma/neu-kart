@@ -1,13 +1,13 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import '../styles/Card.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { cartItemsSelector, wishListItemsSelector } from '../redux/selectors';
 import {
-  addToWishlistAction,
-  removeFromWishlistAction,
+  addToWishlistThunk,
+  removeFromWishlistThunk,
 } from '../redux/features/wishListSlice';
-import { addToCartAction } from '../redux/features/cartSlice';
+import { addToCartThunk } from '../redux/features/cartSlice';
 import { toast } from 'react-toastify';
 
 const Card = props => {
@@ -23,7 +23,9 @@ const Card = props => {
     imageUrl,
     productId,
   } = props.data;
+  const id = sessionStorage.getItem('loginUserId');
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const wishListItems = useSelector(wishListItemsSelector);
   const cartItems = useSelector(cartItemsSelector);
@@ -36,8 +38,17 @@ const Card = props => {
           <span
             className='material-symbols-outlined wishlist-icon-active'
             onClick={() => {
-              dispatch(removeFromWishlistAction(productId));
-              toast.success('Item removed from Wishlist');
+              if (id) {
+                dispatch(removeFromWishlistThunk(productId))
+                  .then(() => {
+                    toast.success('Item removed from Wishlist');
+                  })
+                  .catch(err => {
+                    console.log(err);
+                  });
+              } else {
+                navigate('/login');
+              }
             }}
           >
             favorite
@@ -46,8 +57,17 @@ const Card = props => {
           <span
             className='material-symbols-outlined wishlist-icon'
             onClick={() => {
-              dispatch(addToWishlistAction(productId));
-              toast.success('Item added to Wishlist');
+              if (id) {
+                dispatch(addToWishlistThunk(productId))
+                  .then(() => {
+                    toast.success('Item added to Wishlist');
+                  })
+                  .catch(err => {
+                    console.log(err);
+                  });
+              } else {
+                navigate('/login');
+              }
             }}
           >
             favorite
@@ -60,7 +80,7 @@ const Card = props => {
       <p>
         <span>₹{price}</span>
         <span className='strike-price'>₹{mrp}</span>
-        <span className='discount'>{discount}</span>
+        <span className='discount'>{discount} % off</span>
       </p>
       <p className='features'>{features}</p>
       <p className='discount'>{offer}</p>
@@ -72,8 +92,17 @@ const Card = props => {
         <button
           className='card-btn add-cart-btn'
           onClick={() => {
-            dispatch(addToCartAction(productId));
-            toast.success("Item added to Cart")
+            if (id) {
+              dispatch(addToCartThunk(productId))
+                .then(() => {
+                  toast.success('Item added to Cart');
+                })
+                .catch(err => {
+                  console.log(err);
+                });
+            } else {
+              navigate('/login');
+            }
           }}
         >
           Add to Cart

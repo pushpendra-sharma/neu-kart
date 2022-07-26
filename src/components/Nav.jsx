@@ -1,9 +1,15 @@
 import { Link } from 'react-router-dom';
 import '../styles/Nav.css';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { loginSelector, userNameSelector } from '../redux/selectors';
+import { signOut } from '../redux/features/authSlice';
+import { clearWishlistAction } from '../redux/features/wishListSlice';
+import { clearCartAction } from '../redux/features/cartSlice';
 
 const Nav = () => {
+  const dispatch = useDispatch();
+  const id = sessionStorage.getItem('loginUserId');
+
   const loginCheck = useSelector(loginSelector);
   const userName = useSelector(userNameSelector);
   return (
@@ -39,6 +45,21 @@ const Nav = () => {
             Wishlist
           </Link>
         </div>
+        {id && (
+          <div className='nav-item'>
+            <Link
+              className='link btn-login'
+              to='/'
+              onClick={() => {
+                dispatch(signOut());
+                dispatch(clearWishlistAction());
+                dispatch(clearCartAction());
+              }}
+            >
+              SignOut
+            </Link>
+          </div>
+        )}
       </nav>
     </>
   );
