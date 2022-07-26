@@ -4,6 +4,8 @@ import './Auth.css';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { loginUser } from '../../redux/features/authSlice';
+import { getWishlistThunk } from '../../redux/features/wishListSlice';
+import { getCart } from '../../redux/features/cartSlice';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -21,7 +23,10 @@ const Login = () => {
     e.preventDefault();
     dispatch(loginUser(userCredentials))
       .then(() => {
+        dispatch(getWishlistThunk());
+        dispatch(getCart());
         toast.success('Login successfull!');
+        navigate('/');
       })
       .catch(err => {
         console.log(err);
@@ -38,6 +43,8 @@ const Login = () => {
       })
     )
       .then(() => {
+        dispatch(getWishlistThunk());
+        dispatch(getCart());
         toast.success('Login successfull!');
         navigate('/');
       })

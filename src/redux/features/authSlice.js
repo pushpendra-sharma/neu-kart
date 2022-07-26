@@ -18,6 +18,7 @@ export const loginUser = createAsyncThunk(
   async loginData => {
     try {
       const resp = await login(loginData);
+      sessionStorage.setItem('loginUserId', resp.data.userId);
       return resp.data;
     } catch (error) {
       return error.response.message;
@@ -30,6 +31,7 @@ export const signUpUser = createAsyncThunk(
   async signUpData => {
     try {
       const resp = await signUp(signUpData);
+      sessionStorage.setItem('loginUserId', resp.data.userId);
       return resp.data;
     } catch (error) {
       return error.response.message;
@@ -40,6 +42,18 @@ export const signUpUser = createAsyncThunk(
 export const authSlice = createSlice({
   name: 'user',
   initialState: initialUserState,
+  reducers: {
+    signOut: state => {
+      state.userDetails = {
+        name: '',
+        address: '',
+        mobileNumber: '',
+        emailId: '',
+      };
+      state.isLoggedIn = false;
+      sessionStorage.removeItem('loginUserId', '');
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(loginUser.pending, state => {
@@ -70,5 +84,7 @@ export const authSlice = createSlice({
       });
   },
 });
+
+export const { signOut } = authSlice.actions;
 
 export default authSlice.reducer;
