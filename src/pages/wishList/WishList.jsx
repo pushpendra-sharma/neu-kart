@@ -1,12 +1,12 @@
 import emptyImage from '../../images/emptyImage.webp';
 import './Wishlist.css';
 import { useSelector } from 'react-redux';
-import { wishListItemsSelector } from '../../redux/selectors';
+import { allProductsSelector, wishListItemsSelector } from '../../redux/selectors';
 import Card from '../../components/Card';
-import { products } from '../../mockData';
 
 const WishList = () => {
   const wishListItems = useSelector(wishListItemsSelector);
+  const products = useSelector(allProductsSelector);
 
   return (
     <div className='wishList-wrapper'>

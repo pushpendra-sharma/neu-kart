@@ -1,19 +1,24 @@
 import PropTypes from 'prop-types';
-
-import { useEffect, useState } from 'react';
-
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { filterByPrice } from '../redux/features/productSlice';
 import '../styles/Filter.css';
+
 const InputRange = props => {
   const { minimum, maximum, step, title, id } = props;
 
-  const [value, setvalue] = useState();
+  const [value, setvalue] = useState(maximum);
 
   const dispatch = useDispatch();
-  useEffect(() => {
-    if (id === 'price') dispatch(filterByPrice(value));
-  }, [dispatch, id, value]);
+
+  const handleChange = e => {
+    setvalue(Number(e.target.value));
+
+    // the value state is 1 iteration behind if we use inside this fucntion but outside ok
+    // controlled component?
+    // if (id === 'price') dispatch(filterByPrice(value));
+    if (id === 'price') dispatch(filterByPrice(Number(e.target.value)));
+  };
 
   return (
     <div className='filter-container'>
@@ -22,7 +27,7 @@ const InputRange = props => {
       </p>
       <p className='input-range-text'>
         <span className='range-min'>{minimum}</span>
-        <span className='range-max'>{maximum}</span>
+        <span className='range-max'>{value}</span>
       </p>
       <input
         type='range'
@@ -30,7 +35,7 @@ const InputRange = props => {
         min={minimum}
         max={maximum}
         step={step}
-        onChange={e => setvalue(e.target.value)}
+        onChange={e => handleChange(e)}
         value={value}
       />
     </div>
@@ -48,7 +53,7 @@ InputRange.propTypes = {
 InputRange.defaultProps = {
   minimum: 0,
   step: 1000,
-  maximum: 10000,
+  maximum: 150000,
   id: 'InputRange',
   title: 'InputRange',
 };

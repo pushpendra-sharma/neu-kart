@@ -8,14 +8,28 @@ import {
   radioInputOptions,
   sortOptions,
   mobileBrands,
-} from '../mockData';
+  laptopBrands,
+} from '../utils/utils';
 import '../styles/Filter.css';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { filtersBySlector } from '../redux/selectors';
+import { useEffect } from 'react';
 
 const Filter = () => {
-  const brands = mobileBrands;
+  const [brands, setBrands] = useState([...mobileBrands, ...laptopBrands]);
+
+  const { category } = useSelector(filtersBySlector);
 
   const [active, setActive] = useState(true);
+
+  useEffect(() => {
+    if (category.length === 1 && category.includes('Mobile')) {
+      setBrands(mobileBrands);
+    } else if (category.length === 1 && category.includes('Laptop')) {
+      setBrands(laptopBrands);
+    } else setBrands([...mobileBrands, ...laptopBrands]);
+  }, [category]);
 
   return (
     <>
@@ -24,14 +38,14 @@ const Filter = () => {
           <h3 className='filter-heading'>Filters</h3>
           {active ? (
             <span
-              class='material-symbols-outlined toggle-filter'
+              className='material-symbols-outlined toggle-filter'
               onClick={() => setActive(!active)}
             >
               expand_less
             </span>
           ) : (
             <span
-              class='material-symbols-outlined toggle-filter'
+              className='material-symbols-outlined toggle-filter'
               onClick={() => setActive(!active)}
             >
               expand_more
@@ -43,8 +57,8 @@ const Filter = () => {
             <CheckBox title='Category' id='category' options={categories} />
             <InputRange title='PRICE' id='price' />
             <CheckBox title='BRAND' id='brand' options={brands} />
-            <CheckBox title='RATING' id='rating' options={customerRatings} />
-            <CheckBox title='Discounts' id='discount' options={discounts} />
+            <RadioInput title='RATING' id='rating' options={customerRatings} />
+            <RadioInput title='Discounts' id='discount' options={discounts} />
             <RadioInput
               title='AVAILABILITY'
               id='availability'

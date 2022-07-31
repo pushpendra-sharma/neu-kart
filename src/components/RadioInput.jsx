@@ -1,9 +1,14 @@
 import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { filterByAvailability, sortBy } from '../redux/features/productSlice';
-
+import {
+  filterByAvailability,
+  filterByDiscount,
+  filterByRating,
+  sortBy,
+} from '../redux/features/productSlice';
 import '../styles/Filter.css';
+
 const RadioInput = props => {
   const { options, title, id } = props;
 
@@ -11,10 +16,16 @@ const RadioInput = props => {
 
   const [value, setvalue] = useState('');
 
-  useEffect(() => {
-    if (id === 'availability') dispatch(filterByAvailability(value));
-    if (id === 'sort') dispatch(sortBy(value));
-  }, [dispatch, id, value]);
+  const handleChange = e => {
+    setvalue(e.target.value);
+    console.log(value);
+
+    // value 1 state behind
+    if (id === 'availability') dispatch(filterByAvailability(e.target.value));
+    if (id === 'discount') dispatch(filterByDiscount(Number(e.target.value)));
+    if (id === 'rating') dispatch(filterByRating(Number(e.target.value)));
+    if (id === 'sort') dispatch(sortBy(e.target.value));
+  };
 
   return (
     <div className='filter-container'>
@@ -29,7 +40,7 @@ const RadioInput = props => {
               type='radio'
               id={item.label}
               className='check-input'
-              onChange={e => setvalue(e.target.value)}
+              onChange={e => handleChange(e)}
               value={item.value}
             />
             <label htmlFor={item.label}>{item.label}</label>

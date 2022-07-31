@@ -1,25 +1,30 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { products } from '../mockData';
 import '../styles/PriceDetails.css';
-import { cartItemsSelector } from '../redux/selectors';
+import { allProductsSelector, cartItemsSelector } from '../redux/selectors';
 
 const PriceDetails = props => {
+
+  const allItems = useSelector(allProductsSelector);
+
   const cartItemsIds = useSelector(cartItemsSelector);
-  const cartItems = products.filter(item =>
+  const cartItems = allItems.filter(item =>
     cartItemsIds.includes(item.productId)
   );
 
-  const cartDetails = cartItems.reduce((previousValue, currentValue) => {
-    return {
-      totalPrice: previousValue.price + currentValue.price,
-      totalMrp: previousValue.mrp + currentValue.mrp,
-      totalOff:
-        previousValue.mrp +
-        currentValue.mrp -
-        (previousValue.price + currentValue.price),
-    };
-  });
+  const cartDetails = cartItems.reduce(
+    (previousValue, currentValue) => {
+      return {
+        price: previousValue.price + currentValue.price,
+        mrp: previousValue.mrp + currentValue.mrp,
+      };
+    },
+    {
+      price: 0,
+      mrp: 0,
+      discount: 0,
+    }
+  );
 
   useEffect(() => {}, [cartItemsIds]);
 
@@ -29,11 +34,13 @@ const PriceDetails = props => {
       <section className='price-details'>
         <p className='order-details'>
           <span>Price ({cartItemsIds.length} items)</span>
-          <span>₹{cartDetails.totalMrp}</span>
+          <span>₹{cartDetails.mrp}</span>
         </p>
         <p className='order-details'>
           <span>Discount</span>
-          <span className='green-text'>- ₹{cartDetails.totalOff}</span>
+          <span className='green-text'>
+            - ₹{cartDetails.mrp - cartDetails.price}
+          </span>
         </p>
         <p className='order-details'>
           <span>Delivery Charges</span>
@@ -41,10 +48,10 @@ const PriceDetails = props => {
         </p>
         <p className='order-details final-price'>
           <span>Total Amount</span>
-          <span>₹{cartDetails.totalPrice}</span>
+          <span>₹{cartDetails.price}</span>
         </p>
         <p className='green-text'>
-          You will save ₹{cartDetails.totalOff} on this order
+          You will save ₹{cartDetails.mrp - cartDetails.price} on this order
         </p>
         <button className='btn-order'>Place Order</button>
       </section>

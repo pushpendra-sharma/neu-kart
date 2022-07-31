@@ -4,7 +4,7 @@ const getAllProducts = () =>
   axios.get('https://neukart-api.herokuapp.com/products/');
 
 const addProduct = item =>
-  axios.get('https://neukart-api.herokuapp.com/products/addProduct', item);
+  axios.post('https://neukart-api.herokuapp.com/products/addProduct', item);
 
 const getProductDetails = id =>
   axios.get(`https://neukart-api.herokuapp.com/products/${id}`);

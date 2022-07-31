@@ -1,11 +1,9 @@
 import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {
   filterByBrand,
   filterByCategory,
-  filterByDiscount,
-  filterByRating,
 } from '../redux/features/productSlice';
 import '../styles/Filter.css';
 const CheckBox = props => {
@@ -20,14 +18,11 @@ const CheckBox = props => {
       ? values.concat(value)
       : values.filter(item => item !== value);
     setvalues(newState);
-  };
 
-  useEffect(() => {
-    if (id === 'category') dispatch(filterByCategory(values));
-    if (id === 'brand') dispatch(filterByBrand(values));
-    if (id === 'discount') dispatch(filterByDiscount(values));
-    if (id === 'rating') dispatch(filterByRating(values));
-  }, [dispatch, id, values]);
+    // values 1 state behind
+    if (id === 'category') dispatch(filterByCategory(newState));
+    if (id === 'brand') dispatch(filterByBrand(newState));
+  };
 
   return (
     <div className='filter-container'>
@@ -42,7 +37,7 @@ const CheckBox = props => {
               id={item.label}
               className='check-input'
               // checked
-              onClick={e => setCheckBoxValues(e)}
+              onChange={e => setCheckBoxValues(e)}
               value={item.value}
             />
             <label htmlFor={item.label}>{item.label}</label>

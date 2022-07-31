@@ -1,18 +1,24 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { laptopBrands, mobileBrands } from '../../utils/utils';
 import { getAllProducts } from '../../services';
+
+const allBrands = [
+  ...mobileBrands.map(item => item.value),
+  ...laptopBrands.map(item => item.value),
+];
 
 const initialProductState = {
   loading: false,
   items: [],
   error: '',
-  sortBy: '',
+  sortBy: 'none',
   filterBy: {
     category: ['Mobile', 'Laptop'],
-    brand: [],
-    availability: '',
-    price: '',
-    rating: [],
-    discount: [],
+    brand: allBrands,
+    availability: 'All',
+    price: 150000,
+    rating: 0,
+    discount: 0,
   },
   filterdItems: [],
 };
@@ -53,6 +59,16 @@ const productSlice = createSlice({
     },
     sortBy: (state, action) => {
       state.sortBy = action.payload;
+    },
+    clearFilters: state => {
+      state.filterBy = {
+        category: ['Mobile', 'Laptop'],
+        brand: allBrands,
+        availability: 'All',
+        price: 150000,
+        rating: 0,
+        discount: 0,
+      };
     },
   },
   extraReducers: builder => {

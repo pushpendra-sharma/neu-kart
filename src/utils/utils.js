@@ -14,26 +14,27 @@ const categories = [
   { label: 'Laptop', value: 'Laptop' },
 ];
 const customerRatings = [
-  { label: '5 & above', value: '5' },
-  { label: '4 & above', value: '4' },
-  { label: '3 & above', value: '3' },
-  { label: '2 & above', value: '2' },
-  { label: '1 & above', value: '1' },
+  { label: '5 & above', value: 5 },
+  { label: '4 & above', value: 4 },
+  { label: '3 & above', value: 3 },
+  { label: '2 & above', value: 2 },
+  { label: '1 & above', value: 1 },
 ];
 const discounts = [
-  { label: '10% or more', value: '10' },
-  { label: '20% or more', value: '20' },
-  { label: '30% or more', value: '30' },
+  { label: '10% or more', value: 10 },
+  { label: '20% or more', value: 20 },
+  { label: '30% or more', value: 30 },
 ];
 
 const radioInputOptions = [
-  { label: 'Available', value: true },
-  { label: 'Include out of stock', value: false },
+  { label: 'Available', value: 'yes' },
+  { label: 'Include out of stock', value: 'no' },
 ];
 const sortOptions = [
-  { label: 'High to Low', value: 'highToLow' },
-  { label: 'Low to High', value: 'lowToHigh' },
-  { label: 'Best ratings', value: 'rating' },
+  { label: 'Price: High to Low', value: 'priceHighToLow' },
+  { label: 'Price: Low to High', value: 'priceLowToHigh' },
+  { label: 'Rating: High to Low', value: 'ratingHighToLow' },
+  { label: 'Rating: Low to High', value: 'ratingLowToHigh' },
 ];
 
 const products = [
@@ -48,7 +49,7 @@ const products = [
     discount: 15,
     offer: 'Bank offer for ICICI',
     features: 'Best phone',
-    availability: true,
+    availability: 'yes',
     rating: 4.6,
     imageUrl:
       'https://rukminim1.flixcart.com/image/312/312/kg8avm80/mobile/r/h/z/apple-iphone-12-dummyapplefsn-original-imafwg8duby8qbn4.jpeg?q=70',
@@ -64,7 +65,7 @@ const products = [
     discount: 10,
     offer: 'Bank offer for ICICI',
     features: 'LiDAR Scanner',
-    availability: true,
+    availability: 'yes',
     rating: 4.8,
     imageUrl:
       'https://rukminim1.flixcart.com/image/312/312/kg8avm80/mobile/s/9/w/apple-iphone-12-pro-dummyapplefsn-original-imafwgbrnpyygbv9.jpeg?q=70',
@@ -80,7 +81,7 @@ const products = [
     discount: 7,
     offer: 'Bank offer for ICICI',
     features: '12MP Front Camera',
-    availability: true,
+    availability: 'yes',
     rating: 4.5,
     imageUrl:
       'https://rukminim1.flixcart.com/image/312/312/kg8avm80/mobile/h/v/w/apple-iphone-12-mini-dummyapplefsn-original-imafwgb2zkjcwpre.jpeg?q=70',
@@ -96,7 +97,7 @@ const products = [
     discount: 13,
     offer: 'Bank offer for ICICI',
     features: 'Liquid Retina HD display',
-    availability: false,
+    availability: 'no',
     rating: 4.4,
     imageUrl:
       'https://rukminim1.flixcart.com/image/312/312/k2jbyq80pkrrdj/mobile-refurbished/k/y/d/iphone-11-256-u-mwm82hn-a-apple-0-original-imafkg25mhaztxns.jpeg?q=70',
@@ -112,7 +113,7 @@ const products = [
     discount: 7,
     offer: 'Bank offer for ICICI',
     features: 'Super Retina XDR display',
-    availability: true,
+    availability: 'yes',
     rating: 4.9,
     imageUrl:
       'https://rukminim1.flixcart.com/image/312/312/ktketu80/mobile/2/y/o/iphone-13-mlpk3hn-a-apple-original-imag6vpyur6hjngg.jpeg?q=70',
@@ -128,7 +129,7 @@ const products = [
     discount: 5,
     offer: 'Bank offer for ICICI',
     features: 'Super Retina XDR display',
-    availability: true,
+    availability: 'yes',
     rating: 4.9,
     imageUrl:
       'https://rukminim1.flixcart.com/image/312/312/ktketu80/mobile/c/g/4/iphone-13-pro-max-mlll3hn-a-apple-original-imag6vpg3r7dyvhm.jpeg?q=70',
@@ -144,7 +145,7 @@ const products = [
     discount: 19,
     offer: '5% cashback on Paytm',
     features: '6000 mAh Li-ion Battery',
-    availability: true,
+    availability: 'yes',
     rating: 3.0,
     imageUrl:
       'https://rukminim1.flixcart.com/image/312/312/kn22m4w0/mobile/9/k/s/galaxy-f12-sm-f127glbiins-samsung-original-imagftmhhhvghq7w.jpeg?q=70',
@@ -160,7 +161,7 @@ const products = [
     discount: 33,
     offer: 'Upto 10% Off on Exchange',
     features: 'Qualcomm SD 750G',
-    availability: true,
+    availability: 'yes',
     rating: 4.1,
     imageUrl:
       'https://rukminim1.flixcart.com/image/312/312/l0sgyvk0/mobile/f/v/c/-original-imagcg22pf79cgau.jpeg?q=70',
@@ -176,7 +177,7 @@ const products = [
     discount: 17,
     offer: 'No Cost EMI on SBI card',
     features: 'Best Rear & Front Camera',
-    availability: true,
+    availability: 'yes',
     rating: 4.9,
     imageUrl:
       'https://rukminim1.flixcart.com/image/312/312/kjvrdzk0/mobile/t/x/3/samsung-galaxy-s21-ultra-sm-g998bzkginu-original-imafzcm2vacyygnb.jpeg?q=70',
@@ -192,7 +193,7 @@ const products = [
     discount: 32,
     offer: 'Bank Offer',
     features: '50MP Rear Camera, 5G',
-    availability: true,
+    availability: 'yes',
     rating: 2.9,
     imageUrl:
       'https://rukminim1.flixcart.com/image/312/312/l1v1uvk0/mobile/t/d/x/galaxy-m33-5g-sm-m336bzbpins-samsung-original-imagdc87gdyremd3.jpeg?q=70',
@@ -208,7 +209,7 @@ const products = [
     discount: 28,
     offer: 'Bank Offer',
     features: 'Qualcomm SM7325, 5G',
-    availability: true,
+    availability: 'yes',
     rating: 3.6,
     imageUrl:
       'https://rukminim1.flixcart.com/image/312/312/kulk9zk0/mobile/j/b/0/galaxy-m52-5g-sm-m526blbhinu-samsung-original-imag7zx66vpkp9mg.jpeg?q=70',
@@ -224,7 +225,7 @@ const products = [
     discount: 5,
     offer: 'Bank Offer',
     features: 'Qualcomm @8 Gen',
-    availability: true,
+    availability: 'yes',
     rating: 4.6,
     imageUrl:
       'https://rukminim1.flixcart.com/image/312/312/l2p23rk0/mobile/b/n/9/12-pro-5g-2201122g-mi-original-imagdz7rs8qfakcb.jpeg?q=70',
@@ -240,7 +241,7 @@ const products = [
     discount: 16,
     offer: 'Bank Offer',
     features: '5000 mAh Battery',
-    availability: true,
+    availability: 'yes',
     rating: 2.5,
     imageUrl:
       'https://rukminim1.flixcart.com/image/312/312/kuef2q80/mobile/w/j/r/redmi-9a-sport-9a-mi-original-imag7gy6tzuz3hk8.jpeg?q=70',
@@ -256,7 +257,7 @@ const products = [
     discount: 16,
     offer: 'Bank Offer',
     features: 'Full HD+ AMOLED Display',
-    availability: false,
+    availability: 'no',
     rating: 3.9,
     imageUrl:
       'https://rukminim1.flixcart.com/image/312/312/ky7lci80/mobile/4/n/d/-original-imagag2gdzpdfsdf.jpeg?q=70',
@@ -268,11 +269,11 @@ const products = [
     category: 'Mobile',
     company: 'Xiaomi',
     price: 15990,
-    mrp:16790,
+    mrp: 16790,
     discount: 5,
     offer: 'Bank Offer',
     features: 'Qualcomm SD 720G',
-    availability: false,
+    availability: 'no',
     rating: 3.7,
     imageUrl:
       'https://rukminim1.flixcart.com/image/312/312/kcdp5zk0/mobile/6/e/k/mi-redmi-note-9-pro-mzb9105in-original-imaftgy6gwe9vnqr.jpeg?q=70',
@@ -288,7 +289,7 @@ const products = [
     discount: 9,
     offer: 'Bank Offer',
     features: 'Qualcomm SD 730G',
-    availability: false,
+    availability: 'no',
     rating: 4.7,
     imageUrl:
       'https://rukminim1.flixcart.com/image/312/312/jxz0brk0/mobile/7/b/a/redmi-k20-na-original-imafgb4xesjtrzuu.jpeg?q=70',
@@ -304,7 +305,7 @@ const products = [
     discount: 0,
     offer: 'Bank Offer',
     features: 'Qualcomm SD 845',
-    availability: true,
+    availability: 'yes',
     rating: 4.8,
     imageUrl:
       'https://rukminim1.flixcart.com/image/312/312/jjg15zk0/mobile/s/p/d/oppo-find-x-cph1871-original-imaf7ywhqmckb6w9.jpeg?q=70',
@@ -320,7 +321,7 @@ const products = [
     discount: 15,
     offer: 'Bank Offer',
     features: '64MP Rear Camera',
-    availability: true,
+    availability: 'yes',
     rating: 3.8,
     imageUrl:
       'https://rukminim1.flixcart.com/image/312/312/l1zc6fk0/mobile/7/z/w/f21-pro-5g-cph2341-oppo-original-imagdf4gnjyayyvs.jpeg?q=70',
@@ -336,7 +337,7 @@ const products = [
     discount: 32,
     offer: 'Bank Offer',
     features: '4320 mAh Battery',
-    availability: false,
+    availability: 'no',
     rating: 2.8,
     imageUrl:
       'https://rukminim1.flixcart.com/image/312/312/kyg5zm80/mobile/n/y/9/-original-imagazh6fmxqpc4m.jpeg?q=70',
@@ -352,7 +353,7 @@ const products = [
     discount: 3,
     offer: '5% cashback on PhonePe',
     features: 'MediaTek P35 Processor',
-    availability: true,
+    availability: 'yes',
     rating: 2.7,
     imageUrl:
       'https://rukminim1.flixcart.com/image/312/312/k7531jk0/mobile/6/u/m/oppo-a31-cph2015-original-imafpg3hkzdma5as.jpeg?q=70',
@@ -368,7 +369,7 @@ const products = [
     discount: 24,
     offer: 'Bank offer for ICICI',
     features: 'Windows 11, MS Office 2019',
-    availability: true,
+    availability: 'yes',
     rating: 3.6,
     imageUrl:
       'https://rukminim1.flixcart.com/image/312/312/l0zm64w0/computer/k/h/m/14s-dq2606tu-thin-and-light-laptop-hp-original-imagcnsfnrzvzbs6.jpeg?q=70',
@@ -384,7 +385,7 @@ const products = [
     discount: 20,
     offer: 'Upto ₹20000 off on exchange',
     features: 'Windows 11 Home',
-    availability: true,
+    availability: 'yes',
     rating: 4.3,
     imageUrl:
       'https://rukminim1.flixcart.com/image/312/312/l2jcccw0/computer/s/k/0/-original-imagdus5mrsgjepa.jpeg?q=70',
@@ -400,7 +401,7 @@ const products = [
     discount: 1,
     offer: 'Upto ₹12000 off on exchange',
     features: 'Windows 10, MS Office 2019',
-    availability: false,
+    availability: 'no',
     rating: 4.2,
     imageUrl:
       'https://rukminim1.flixcart.com/image/312/312/kbqu4cw0/computer/v/r/y/hp-original-imaftyzqzbyerzgt.jpeg?q=70',
@@ -416,7 +417,7 @@ const products = [
     discount: 5,
     offer: 'Bank Offer',
     features: 'Intel core i7 11th Gen',
-    availability: true,
+    availability: 'yes',
     rating: 4.9,
     imageUrl:
       'https://rukminim1.flixcart.com/image/312/312/kwcfngw0/computer/y/q/d/-original-imag9fgxy7mjf4zd.jpeg?q=70',
@@ -432,7 +433,7 @@ const products = [
     discount: 36,
     offer: 'Bank Offer',
     features: 'Windows 11, MS Office 2021',
-    availability: true,
+    availability: 'yes',
     rating: 3.9,
     imageUrl:
       'https://rukminim1.flixcart.com/image/312/312/kt8zb0w0/computer/n/m/v/inspiron-3511-thin-and-light-laptop-dell-original-imag6n5kbmfcgxk6.jpeg?q=70',
@@ -448,7 +449,7 @@ const products = [
     discount: 11,
     offer: 'No cost EMI offer',
     features: 'Touchscreen, Windows 11',
-    availability: true,
+    availability: 'yes',
     rating: 2.9,
     imageUrl:
       'https://rukminim1.flixcart.com/image/312/312/kqb8pzk0/computer/d/j/c/na-2-in-1-laptop-dell-original-imag4dy68bwtg8j9.jpeg?q=70',
@@ -464,7 +465,7 @@ const products = [
     discount: 8,
     offer: 'Bank Offer',
     features: 'Windows 11, MS Office 2019',
-    availability: false,
+    availability: 'no',
     rating: 4.0,
     imageUrl:
       'https://rukminim1.flixcart.com/image/312/312/kxm5qq80/computer/i/s/2/na-laptop-dell-original-imagayta7txhw4ch.jpeg?q=70',
@@ -480,7 +481,7 @@ const products = [
     discount: 9,
     offer: 'Bank Offer',
     features: 'NVIDIA GeForce GTX 1650',
-    availability: true,
+    availability: 'yes',
     rating: 4.8,
     imageUrl:
       'https://rukminim1.flixcart.com/image/312/312/kqgyhe80/computer/d/l/f/g15-5510-notebook-dell-original-imag4gy96ahhtmvz.jpeg?q=70',
@@ -496,7 +497,7 @@ const products = [
     discount: 32,
     offer: '₹2000 cashback offer on Paytm',
     features: 'MS Office 2019, 2GB Graphics',
-    availability: true,
+    availability: 'yes',
     rating: 4.0,
     imageUrl:
       'https://rukminim1.flixcart.com/image/312/312/klfhk7k0/computer/w/u/x/na-thin-and-light-laptop-lenovo-original-imagyk4hedcydqx5.jpeg?q=70',
@@ -512,7 +513,7 @@ const products = [
     discount: 40,
     offer: 'Bank Offer',
     features: 'Windows 11, MS Office 2021',
-    availability: true,
+    availability: 'yes',
     rating: 2.0,
     imageUrl:
       'https://rukminim1.flixcart.com/image/312/312/keaaavk0/computer/c/q/t/lenovo-na-thin-and-light-laptop-original-imafuzt873zgp9xe.jpeg?q=70',
@@ -528,7 +529,7 @@ const products = [
     discount: 1,
     offer: '12% cashback on Axis Bank',
     features: '14 inch Touchscreen display',
-    availability: false,
+    availability: 'no',
     rating: 4.9,
     imageUrl:
       'https://rukminim1.flixcart.com/image/312/312/kdyus280/computer/v/f/k/lenovo-na-thin-and-light-laptop-original-imafuqwpgzhytd5c.jpeg?q=70',
@@ -544,7 +545,7 @@ const products = [
     discount: 22,
     offer: 'No cost EMI offer',
     features: 'Windows 11, MS Office 2021',
-    availability: true,
+    availability: 'yes',
     rating: 3.9,
     imageUrl:
       'https://rukminim1.flixcart.com/image/312/312/kruyw7k0/computer/f/i/u/na-thin-and-light-laptop-lenovo-original-imag5jy6fsm2yx4q.jpeg?q=70',
