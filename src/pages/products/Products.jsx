@@ -1,9 +1,8 @@
-import Card from '../../components/Card';
-import PropTypes from 'prop-types';
-import Filter from '../../components/Filter';
-import './Products.css';
-import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
+import './Products.css';
+import { Card, Filter } from '../../components';
 import { allProductsSelector, filtersBySlector } from '../../redux/selectors';
 
 const Products = () => {

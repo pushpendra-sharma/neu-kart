@@ -1,8 +1,8 @@
+import { useSelector } from 'react-redux'
 import emptyImage from '../../images/emptyImage.webp';
 import './Wishlist.css';
-import { useSelector } from 'react-redux';
+import { Card } from '../../components';
 import { allProductsSelector, wishListItemsSelector } from '../../redux/selectors';
-import Card from '../../components/Card';
 
 const WishList = () => {
   const wishListItems = useSelector(wishListItemsSelector);

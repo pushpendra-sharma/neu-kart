@@ -1,6 +1,8 @@
-import CheckBox from './CheckBox';
-import InputRange from './InputRange';
-import RadioInput from './RadioInput';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { CheckBox, InputRange, RadioInput } from './index';
+import '../styles/Filter.css';
+import { filtersBySlector } from '../redux/selectors';
 import {
   categories,
   discounts,
@@ -10,11 +12,6 @@ import {
   mobileBrands,
   laptopBrands,
 } from '../utils/utils';
-import '../styles/Filter.css';
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { filtersBySlector } from '../redux/selectors';
-import { useEffect } from 'react';
 
 const Filter = () => {
   const [brands, setBrands] = useState([...mobileBrands, ...laptopBrands]);

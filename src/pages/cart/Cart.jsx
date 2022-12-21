@@ -1,10 +1,9 @@
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import emptyImage from '../../images/emptyImage.webp';
 import './Cart.css';
-import { useSelector } from 'react-redux';
+import { CartCard, PriceDetails } from '../../components';
 import { allProductsSelector, cartItemsSelector } from '../../redux/selectors';
-import CartCard from '../../components/CartCard';
-import PriceDetails from '../../components/PriceDetails';
 
 const Cart = () => {
   const cartItems = useSelector(cartItemsSelector);

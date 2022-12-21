@@ -1,14 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
-import Nav from './components/Nav';
-import Footer from './components/Footer';
-import Home from './pages/homepage/Home';
-import Login from './pages/auth/Login';
-import Cart from './pages/cart/Cart';
-import Products from './pages/products/Products';
-import WishList from './pages/wishList/WishList';
-import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import SignUp from './pages/auth/SignUp';
+import { ToastContainer } from 'react-toastify';
+import { Footer, Nav } from './components';
+import { Cart, Home, Login, Products, SignUp, WishList } from './pages';
 
 function App() {
   return (

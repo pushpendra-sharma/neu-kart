@@ -1,14 +1,14 @@
-import { Link, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import '../styles/Card.css';
+import { toast } from 'react-toastify';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { cartItemsSelector, wishListItemsSelector } from '../redux/selectors';
+import '../styles/Card.css';
 import {
   addToWishlistThunk,
   removeFromWishlistThunk,
 } from '../redux/features/wishListSlice';
+import { cartItemsSelector, wishListItemsSelector } from '../redux/selectors';
 import { addToCartThunk } from '../redux/features/cartSlice';
-import { toast } from 'react-toastify';
 
 const Card = props => {
   const {

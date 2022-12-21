@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import '../styles/Nav.css';
 import { useSelector, useDispatch } from 'react-redux';
+import '../styles/Nav.css';
 import { loginSelector, userNameSelector } from '../redux/selectors';
 import { signOut } from '../redux/features/authSlice';
 import { clearWishlistAction } from '../redux/features/wishListSlice';
