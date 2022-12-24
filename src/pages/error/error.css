@@ -1,0 +1,53 @@
+.err-wrapper {
+  margin: 2rem 1rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px 0px;
+}
+
+.err-header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 1rem;
+}
+
+.err-body {
+  padding: 2rem;
+  display: block;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+}
+
+.err-img {
+  display: block;
+  margin: auto;
+  padding: 1rem 4rem;
+  max-width: 35rem;
+}
+
+.err-img > .err-empty-img {
+  width: 100%;
+}
+
+.err-desc {
+  font-size: large;
+  margin: 1rem;
+}
+
+.err-msg {
+  font-size: medium;
+  margin: 1rem;
+}
+
+.non-empty-err-body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: stretch;
+  gap: 0.5rem 1rem;
+}
