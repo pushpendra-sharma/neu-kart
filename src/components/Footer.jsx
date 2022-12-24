@@ -6,10 +6,13 @@ const Footer = () => {
       <footer className='footer footer-container'>
         <div className='footer-item'>
           <div className='footer-header'>SOCIAL</div>
-          <a className='footer-link' href='https://github.com/Pushpendra-Sharma'>
+          <a
+            className='footer-link'
+            href='https://github.com/Pushpendra-Sharma'
+          >
             GitHub
           </a>
-          <a className='footer-link' href='https://twitter.com/100Pushpendra'>
+          <a className='footer-link' href='https://twitter.com/ietl_pushpendra'>
             Twitter
           </a>
           <a

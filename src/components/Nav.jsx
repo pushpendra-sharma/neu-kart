@@ -15,40 +15,28 @@ const Nav = () => {
   return (
     <>
       <nav className='navigation nav-container'>
-        <div className='nav-brand'>
-          <Link className='link' to='/'>
+        <div className='nav-item'>
+          <Link className='link nav-brand' to='/'>
             Neukart
           </Link>
-        </div>
-        <div className='nav-item'>
           <input
             className='nav-searchbar'
-            placeholder='Search for products, brands and more'
+            placeholder='Search for products, brands...'
           />
         </div>
-        {loginCheck ? (
-          <div className='nav-item'>Hi, {userName.split(' ')[0]}</div>
-        ) : (
-          <div className='nav-item'>
-            <Link className='link btn-login' to='/login'>
-              Login
-            </Link>
-          </div>
-        )}
         <div className='nav-item'>
+          {loginCheck && (
+            <div className='nav-name'>Hi, {userName.split(' ')[0]}</div>
+          )}
           <Link className='link btn-cart' to='/cart'>
             Cart
           </Link>
-        </div>
-        <div className='nav-item'>
           <Link className='link btn-cart' to='/wishlist'>
             Wishlist
           </Link>
-        </div>
-        {id && (
-          <div className='nav-item'>
+          {loginCheck ? (
             <Link
-              className='link btn-login'
+              className='link nav-btn'
               to='/'
               onClick={() => {
                 dispatch(signOut());
@@ -56,10 +44,14 @@ const Nav = () => {
                 dispatch(clearCartAction());
               }}
             >
-              SignOut
+              Sign Out
             </Link>
-          </div>
-        )}
+          ) : (
+            <Link className='link nav-btn' to='/login'>
+              Login
+            </Link>
+          )}
+        </div>
       </nav>
     </>
   );
