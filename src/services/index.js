@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+let token = sessionStorage.getItem('token');
+
 const getAllProducts = () =>
   axios.get('https://neukart-api.onrender.com/products/');
 
@@ -16,30 +18,49 @@ const signUp = data =>
   axios.post('https://neukart-api.onrender.com/users/', data);
 
 const addToCart = (userId, productId) =>
-  axios.post(
-    `https://neukart-api.onrender.com/cart/add/${userId}/${productId}`
-  );
+  axios.post(`http://localhost:4000/api/cart/add/${userId}/${productId}`, {
+    headers: {
+      Authorization: token,
+    },
+  });
 
 const removeFromCart = (userId, productId) =>
-  axios.delete(
-    `https://neukart-api.onrender.com/cart/remove/${userId}/${productId}`
-  );
+  axios.delete(`http://localhost:4000/api/cart/remove/${userId}/${productId}`, {
+    headers: {
+      Authorization: token,
+    },
+  });
 
 const getCartItems = userId =>
-  axios.get(`https://neukart-api.onrender.com/cart/${userId}`);
+  axios.get(`http://localhost:4000/api/cart/${userId}`, {
+    headers: {
+      Authorization: token,
+    },
+  });
 
 const addToWishlist = (userId, productId) =>
-  axios.post(
-    `https://neukart-api.onrender.com/wishlist/add/${userId}/${productId}`
-  );
+  axios.post(`http://localhost:4000/api/wishlist/add/${userId}/${productId}`, {
+    headers: {
+      Authorization: token,
+    },
+  });
 
 const removeFromWishlist = (userId, productId) =>
   axios.delete(
-    `https://neukart-api.onrender.com/wishlist/remove/${userId}/${productId}`
+    `http://localhost:4000/api/wishlist/remove/${userId}/${productId}`,
+    {
+      headers: {
+        Authorization: token,
+      },
+    }
   );
 
 const getWishlistItems = userId =>
-  axios.get(`https://neukart-api.onrender.com/wishlist/${userId}`);
+  axios.get(`http://localhost:4000/api/wishlist/${userId}`, {
+    headers: {
+      Authorization: token,
+    },
+  });
 
 export {
   getAllProducts,
