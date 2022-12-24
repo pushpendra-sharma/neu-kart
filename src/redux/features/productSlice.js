@@ -30,7 +30,7 @@ export const fetchProducts = createAsyncThunk(
       const resp = await getAllProducts();
       return resp.data;
     } catch (error) {
-      return error.message;
+      return error.response.data;
     }
   }
 );
@@ -78,7 +78,7 @@ const productSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
-        state.items = action.payload;
+        state.items = action.payload.items;
         state.loading = false;
       })
       .addCase(fetchProducts.rejected, (state, action) => {

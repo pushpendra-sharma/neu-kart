@@ -19,7 +19,7 @@ export const getWishlistThunk = createAsyncThunk(
       const resp = await getWishlistItems(id);
       return resp.data;
     } catch (error) {
-      return error.message;
+      return error.response.data;
     }
   }
 );
@@ -32,7 +32,7 @@ export const addToWishlistThunk = createAsyncThunk(
       const res = await addToWishlist(id, pid);
       return res.data;
     } catch (error) {
-      return error.message;
+      return error.response.data;
     }
   }
 );
@@ -45,7 +45,7 @@ export const removeFromWishlistThunk = createAsyncThunk(
       const res = await removeFromWishlist(id, pid);
       return res.data;
     } catch (error) {
-      return error.message;
+      return error.response.data;
     }
   }
 );
@@ -53,18 +53,7 @@ export const removeFromWishlistThunk = createAsyncThunk(
 export const wishListSlice = createSlice({
   name: 'wishlist',
   initialState: wishlistState,
-  reducers: {
-    addToWishlistAction: (state, action) => {
-      state.items = [...state.items, action.payload];
-    },
-    removeFromWishlistAction: (state, action) => {
-      const index = state.items.indexOf(action.payload);
-      state.items.splice(index, 1);
-    },
-    clearWishlistAction: state => {
-      state.items = [];
-    },
-  },
+  reducers: {},
   extraReducers: builder => {
     builder
       .addCase(addToWishlistThunk.pending, state => {
@@ -72,9 +61,13 @@ export const wishListSlice = createSlice({
         state.error = null;
       })
       .addCase(addToWishlistThunk.fulfilled, (state, action) => {
-        state.items = [...action.payload];
+        if (action.payload.success) {
+          state.items = action.payload.items;
+          state.error = null;
+        } else {
+          state.error = action.payload.message;
+        }
         state.loading = false;
-        state.error = null;
       })
       .addCase(addToWishlistThunk.rejected, (state, action) => {
         state.loading = false;
@@ -85,9 +78,13 @@ export const wishListSlice = createSlice({
         state.error = null;
       })
       .addCase(removeFromWishlistThunk.fulfilled, (state, action) => {
-        state.items = [...action.payload];
+        if (action.payload.success) {
+          state.items = action.payload.items;
+          state.error = null;
+        } else {
+          state.error = action.payload.message;
+        }
         state.loading = false;
-        state.error = null;
       })
       .addCase(removeFromWishlistThunk.rejected, (state, action) => {
         state.loading = false;
@@ -98,9 +95,13 @@ export const wishListSlice = createSlice({
         state.error = null;
       })
       .addCase(getWishlistThunk.fulfilled, (state, action) => {
-        state.items = action.payload;
+        if (action.payload.success) {
+          state.items = action.payload.items;
+          state.error = null;
+        } else {
+          state.error = action.payload.message;
+        }
         state.loading = false;
-        state.error = null;
       })
       .addCase(getWishlistThunk.rejected, (state, action) => {
         state.loading = false;
