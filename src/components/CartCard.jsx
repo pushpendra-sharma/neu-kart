@@ -15,7 +15,7 @@ const CartCard = props => {
     discount,
     rating,
     imageUrl,
-    productId,
+    _id,
   } = props.data;
 
   const dispatch = useDispatch();
@@ -37,7 +37,7 @@ const CartCard = props => {
       <span
         className='material-symbols-outlined delete-icon'
         onClick={() => {
-          dispatch(removeFromCartThunk(productId))
+          dispatch(removeFromCartThunk(_id))
             .then(() => {
               toast.success('Item removed from Cart');
             })

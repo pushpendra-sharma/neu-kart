@@ -1,12 +1,23 @@
-import { useSelector } from 'react-redux'
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import emptyImage from '../../images/emptyImage.webp';
 import './Wishlist.css';
 import { Card } from '../../components';
-import { allProductsSelector, wishListItemsSelector } from '../../redux/selectors';
+import {
+  allProductsSelector,
+  wishListItemsSelector,
+} from '../../redux/selectors';
+import { getWishlistThunk } from '../../redux/features/wishListSlice';
 
 const WishList = () => {
   const wishListItems = useSelector(wishListItemsSelector);
   const products = useSelector(allProductsSelector);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getWishlistThunk());
+  }, [dispatch]);
 
   return (
     <div className='wishList-wrapper'>
@@ -18,9 +29,9 @@ const WishList = () => {
       {wishListItems.length ? (
         <div className='non-empty-wishList-body'>
           {products
-            .filter(item => wishListItems.includes(item.productId))
+            .filter(item => wishListItems.includes(item._id))
             .map(item => (
-              <Card key={item.productId} data={item} />
+              <Card key={item._id} data={item} />
             ))}
         </div>
       ) : (

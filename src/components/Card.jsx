@@ -21,7 +21,7 @@ const Card = props => {
     discount,
     rating,
     imageUrl,
-    productId,
+    _id,
   } = props.data;
   const id = sessionStorage.getItem('loginUserId');
 
@@ -34,12 +34,12 @@ const Card = props => {
     <div className='card-container'>
       <div className='card-img'>
         <img src={imageUrl} alt='product' className='card-photo'></img>
-        {wishListItems.includes(productId) ? (
+        {wishListItems.includes(_id) ? (
           <span
             className='material-symbols-outlined wishlist-icon-active'
             onClick={() => {
               if (id) {
-                dispatch(removeFromWishlistThunk(productId))
+                dispatch(removeFromWishlistThunk(_id))
                   .then(() => {
                     toast.success('Item removed from Wishlist');
                   })
@@ -58,7 +58,7 @@ const Card = props => {
             className='material-symbols-outlined wishlist-icon'
             onClick={() => {
               if (id) {
-                dispatch(addToWishlistThunk(productId))
+                dispatch(addToWishlistThunk(_id))
                   .then(() => {
                     toast.success('Item added to Wishlist');
                   })
@@ -84,7 +84,7 @@ const Card = props => {
       </p>
       <p className='features'>{features}</p>
       <p className='discount'>{offer}</p>
-      {cartItems.includes(productId) ? (
+      {cartItems.includes(_id) ? (
         <Link to='/cart' className='card-btn go-cart-btn'>
           Go to Cart
         </Link>
@@ -93,7 +93,7 @@ const Card = props => {
           className='card-btn add-cart-btn'
           onClick={() => {
             if (id) {
-              dispatch(addToCartThunk(productId))
+              dispatch(addToCartThunk(_id))
                 .then(() => {
                   toast.success('Item added to Cart');
                 })
