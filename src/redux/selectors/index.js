@@ -1,5 +1,5 @@
 const loginSelector = state => state.user.isLoggedIn;
-const userNameSelector = state => state.user.userDetails.name;
+const userNameSelector = state => state.user.profile.name;
 const cartItemsSelector = state => state.cart.items;
 const wishListItemsSelector = state => state.wishList.items;
 const allProductsSelector = state => state.products.items;
