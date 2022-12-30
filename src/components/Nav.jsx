@@ -8,7 +8,6 @@ import { clearCartAction } from '../redux/features/cartSlice';
 
 const Nav = () => {
   const dispatch = useDispatch();
-  const id = sessionStorage.getItem('loginUserId');
 
   const loginCheck = useSelector(loginSelector);
   const userName = useSelector(userNameSelector);
