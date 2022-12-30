@@ -16,7 +16,8 @@ export const getWishlistThunk = createAsyncThunk(
   async () => {
     try {
       const id = sessionStorage.getItem('loginUserId');
-      const resp = await getWishlistItems(id);
+      const token = sessionStorage.getItem('token');
+      const resp = await getWishlistItems(id, token);
       return resp.data;
     } catch (error) {
       return error.response.data;
@@ -29,7 +30,8 @@ export const addToWishlistThunk = createAsyncThunk(
   async pid => {
     try {
       const id = sessionStorage.getItem('loginUserId');
-      const res = await addToWishlist(id, pid);
+      const token = sessionStorage.getItem('token');
+      const res = await addToWishlist(id, pid, token);
       return res.data;
     } catch (error) {
       return error.response.data;
@@ -42,7 +44,8 @@ export const removeFromWishlistThunk = createAsyncThunk(
   async pid => {
     try {
       const id = sessionStorage.getItem('loginUserId');
-      const res = await removeFromWishlist(id, pid);
+      const token = sessionStorage.getItem('token');
+      const res = await removeFromWishlist(id, pid, token);
       return res.data;
     } catch (error) {
       return error.response.data;

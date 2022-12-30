@@ -10,7 +10,8 @@ const cartState = {
 export const getCart = createAsyncThunk(`cart/getItems`, async () => {
   try {
     const id = sessionStorage.getItem('loginUserId');
-    const resp = await getCartItems(id);
+    const token = sessionStorage.getItem('token');
+    const resp = await getCartItems(id, token);
     return resp.data;
   } catch (error) {
     return error.response.data;
@@ -20,7 +21,8 @@ export const getCart = createAsyncThunk(`cart/getItems`, async () => {
 export const addToCartThunk = createAsyncThunk(`cart/addItem`, async pid => {
   try {
     const id = sessionStorage.getItem('loginUserId');
-    const resp = await addToCart(id, pid);
+    const token = sessionStorage.getItem('token');
+    const resp = await addToCart(id, pid, token);
     return resp.data;
   } catch (error) {
     return error.response.data;
@@ -32,7 +34,8 @@ export const removeFromCartThunk = createAsyncThunk(
   async pid => {
     try {
       const id = sessionStorage.getItem('loginUserId');
-      const resp = await removeFromCart(id, pid);
+      const token = sessionStorage.getItem('token');
+      const resp = await removeFromCart(id, pid, token);
       return resp.data;
     } catch (error) {
       return error.response.data;
@@ -43,9 +46,7 @@ export const removeFromCartThunk = createAsyncThunk(
 export const cartSlice = createSlice({
   name: 'cart',
   initialState: cartState,
-  reducers: {
-    
-  },
+  reducers: {},
   extraReducers: builder => {
     builder
       .addCase(getCart.pending, state => {
