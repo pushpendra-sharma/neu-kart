@@ -52,9 +52,7 @@ export const authSlice = createSlice({
   reducers: {
     signOut: state => {
       state = initialUserState;
-      state.isLoggedIn = false;
-      sessionStorage.removeItem('loginUserId');
-      sessionStorage.removeItem('token');
+      sessionStorage.clear();
     },
   },
   extraReducers: builder => {

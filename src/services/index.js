@@ -13,7 +13,7 @@ const login = loginData =>
   axios.post('https://neukart-api.onrender.com/users/login', loginData);
 
 const signUp = data =>
-  axios.post('https://neukart-api.onrender.com/users/', data);
+  axios.post('https://neukart-api.onrender.com/users/signup', data);
 
 const addToCart = (userId, productId, token) =>
   axios.post(
