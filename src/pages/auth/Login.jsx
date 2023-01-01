@@ -71,7 +71,7 @@ const Login = () => {
           ></input>
           <span className='forgot-password'>Forgot?</span>
           <p className='terms'>
-            By continuing, you agree to Flipkart's <span>Terms of Use</span> and
+            By continuing, you agree to Neukart's <span>Terms of Use</span> and
             <span> Privacy Policy.</span>
           </p>
           <button className='btn-login' onClick={loginHandler}>
@@ -81,7 +81,7 @@ const Login = () => {
             Test Login
           </button>
           <Link className='signup' to='/signup'>
-            New to Flipkart? Create an account
+            New to Neukart? Create an account
           </Link>
         </section>
       </div>
