@@ -4,6 +4,7 @@ export { default as CheckBox } from './CheckBox';
 export { default as RadioInput } from './RadioInput';
 export { default as ClearButton } from './ClearButton';
 export { default as InputRange } from './InputRange';
+export { default as FieldTypeAhead } from './FieldTypeAhead';
 export { default as Nav } from './Nav';
 export { default as Filter } from './Filter';
 export { default as Footer } from './Footer';
