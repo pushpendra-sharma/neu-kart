@@ -13,33 +13,63 @@ const login = loginData =>
   axios.post('https://neukart-api.onrender.com/users/login', loginData);
 
 const signUp = data =>
-  axios.post('https://neukart-api.onrender.com/users/', data);
+  axios.post('https://neukart-api.onrender.com/users/signup', data);
 
-const addToCart = (userId, productId) =>
+const addToCart = (userId, productId, token) =>
   axios.post(
-    `https://neukart-api.onrender.com/cart/add/${userId}/${productId}`
+    `https://neukart-api.onrender.com/cart/add/${userId}/${productId}`,
+    {},
+    {
+      headers: {
+        Authorization: token,
+      },
+    }
   );
 
-const removeFromCart = (userId, productId) =>
+const removeFromCart = (userId, productId, token) =>
   axios.delete(
-    `https://neukart-api.onrender.com/cart/remove/${userId}/${productId}`
+    `https://neukart-api.onrender.com/cart/remove/${userId}/${productId}`,
+    {
+      headers: {
+        Authorization: token,
+      },
+    }
   );
 
-const getCartItems = userId =>
-  axios.get(`https://neukart-api.onrender.com/cart/${userId}`);
+const getCartItems = (userId, token) =>
+  axios.get(`https://neukart-api.onrender.com/cart/${userId}`, {
+    headers: {
+      Authorization: token,
+    },
+  });
 
-const addToWishlist = (userId, productId) =>
+const addToWishlist = (userId, productId, token) =>
   axios.post(
-    `https://neukart-api.onrender.com/wishlist/add/${userId}/${productId}`
+    `https://neukart-api.onrender.com/wishlist/add/${userId}/${productId}`,
+    {},
+    {
+      headers: {
+        Authorization: token,
+      },
+    }
   );
 
-const removeFromWishlist = (userId, productId) =>
+const removeFromWishlist = (userId, productId, token) =>
   axios.delete(
-    `https://neukart-api.onrender.com/wishlist/remove/${userId}/${productId}`
+    `https://neukart-api.onrender.com/wishlist/remove/${userId}/${productId}`,
+    {
+      headers: {
+        Authorization: token,
+      },
+    }
   );
 
-const getWishlistItems = userId =>
-  axios.get(`https://neukart-api.onrender.com/wishlist/${userId}`);
+const getWishlistItems = (userId, token) =>
+  axios.get(`https://neukart-api.onrender.com/wishlist/${userId}`, {
+    headers: {
+      Authorization: token,
+    },
+  });
 
 export {
   getAllProducts,

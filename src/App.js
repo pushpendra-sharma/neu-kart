@@ -1,16 +1,23 @@
+import { useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
-import Nav from './components/Nav';
-import Footer from './components/Footer';
-import Home from './pages/homepage/Home';
-import Login from './pages/auth/Login';
-import Cart from './pages/cart/Cart';
-import Products from './pages/products/Products';
-import WishList from './pages/wishList/WishList';
-import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import SignUp from './pages/auth/SignUp';
+import { ToastContainer } from 'react-toastify';
+import { Footer, Nav } from './components';
+import {
+  Cart,
+  Error,
+  Home,
+  Login,
+  Products,
+  RequiresAuth,
+  SignUp,
+  WishList,
+} from './pages';
+import { loginSelector } from './redux/selectors';
 
 function App() {
+  const isAuth = useSelector(loginSelector);
+
   return (
     <>
       <ToastContainer
@@ -30,10 +37,25 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<SignUp />} />
-        <Route path='/cart' element={<Cart />} />
+        <Route
+          path='/cart'
+          element={
+            <RequiresAuth isAuth={isAuth}>
+              <Cart />
+            </RequiresAuth>
+          }
+        />
         <Route path='/products' element={<Products />} />
-        <Route path='/wishlist' element={<WishList />} />
-        <Route path='*' element={<Home />} />
+        <Route
+          path='/wishlist'
+          element={
+            <RequiresAuth isAuth={isAuth}>
+              <WishList />
+            </RequiresAuth>
+          }
+        />
+        <Route path='/error' element={<Error />} />
+        <Route path='*' element={<Error />} />
       </Routes>
       <Footer />
     </>

@@ -1,11 +1,9 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import './Auth.css';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
+import './Auth.css';
 import { loginUser } from '../../redux/features/authSlice';
-import { getWishlistThunk } from '../../redux/features/wishListSlice';
-import { getCart } from '../../redux/features/cartSlice';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -23,8 +21,6 @@ const Login = () => {
     e.preventDefault();
     dispatch(loginUser(userCredentials))
       .then(() => {
-        dispatch(getWishlistThunk());
-        dispatch(getCart());
         toast.success('Login successfull!');
         navigate('/');
       })
@@ -43,8 +39,6 @@ const Login = () => {
       })
     )
       .then(() => {
-        dispatch(getWishlistThunk());
-        dispatch(getCart());
         toast.success('Login successfull!');
         navigate('/');
       })
@@ -77,7 +71,7 @@ const Login = () => {
           ></input>
           <span className='forgot-password'>Forgot?</span>
           <p className='terms'>
-            By continuing, you agree to Flipkart's <span>Terms of Use</span> and
+            By continuing, you agree to Neukart's <span>Terms of Use</span> and
             <span> Privacy Policy.</span>
           </p>
           <button className='btn-login' onClick={loginHandler}>
@@ -87,7 +81,7 @@ const Login = () => {
             Test Login
           </button>
           <Link className='signup' to='/signup'>
-            New to Flipkart? Create an account
+            New to Neukart? Create an account
           </Link>
         </section>
       </div>

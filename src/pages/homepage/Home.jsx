@@ -1,5 +1,4 @@
-import React from 'react';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchProducts } from '../../redux/features/productSlice';
@@ -15,14 +14,16 @@ const Home = () => {
   return (
     <main className='main-container'>
       <header className='main-header-item'>
+        <div>
+          <h2 className='hero-heading'>
+            Get top deals on Mobiles and Electronics.
+          </h2>
+        </div>
         <img
           className='hero-img'
           src='https://images-eu.ssl-images-amazon.com/images/G/31/img21/Wireless/katariy/BAU/OP_Dec/D24582943_IN_WL_Category_Page_1500x400.gif'
           alt='hero'
         />
-        {/* <h2 className='hero-heading'>
-            Get top deals on Mobiles and Electronics.
-          </h2> */}
       </header>
 
       <div className='main-item'>

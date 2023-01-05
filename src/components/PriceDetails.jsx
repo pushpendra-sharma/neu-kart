@@ -9,7 +9,7 @@ const PriceDetails = props => {
 
   const cartItemsIds = useSelector(cartItemsSelector);
   const cartItems = allItems.filter(item =>
-    cartItemsIds.includes(item.productId)
+    cartItemsIds.includes(item._id)
   );
 
   const cartDetails = cartItems.reduce(

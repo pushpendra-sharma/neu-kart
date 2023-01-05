@@ -1,14 +1,20 @@
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import emptyImage from '../../images/emptyImage.webp';
 import './Cart.css';
-import { useSelector } from 'react-redux';
+import { CartCard, PriceDetails } from '../../components';
 import { allProductsSelector, cartItemsSelector } from '../../redux/selectors';
-import CartCard from '../../components/CartCard';
-import PriceDetails from '../../components/PriceDetails';
+import { getCart } from '../../redux/features/cartSlice';
 
 const Cart = () => {
   const cartItems = useSelector(cartItemsSelector);
   const products = useSelector(allProductsSelector);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCart());
+  }, [dispatch]);
 
   return (
     <>
@@ -24,9 +30,9 @@ const Cart = () => {
             </div>
             <div className='cart-items'>
               {products
-                .filter(item => cartItems.includes(item.productId))
+                .filter(item => cartItems.includes(item._id))
                 .map(item => (
-                  <CartCard key={item.productId} data={item} />
+                  <CartCard key={item._id} data={item} />
                 ))}
             </div>
           </div>
