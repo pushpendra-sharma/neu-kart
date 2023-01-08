@@ -8,6 +8,7 @@ import { loginUser } from '../../redux/features/authSlice';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -20,12 +21,14 @@ const Login = () => {
   const loginHandler = e => {
     e.preventDefault();
     dispatch(loginUser(userCredentials))
+      .unwrap()
       .then(() => {
         toast.success('Login successfull!');
         navigate('/');
       })
-      .catch(err => {
-        console.log(err);
+      .catch(e => {
+        setError(e.message);
+        toast.error('Login failed!');
       });
   };
 
@@ -38,12 +41,14 @@ const Login = () => {
         password: 'kevin@123',
       })
     )
+      .unwrap()
       .then(() => {
         toast.success('Login successfull!');
         navigate('/');
       })
       .catch(err => {
-        console.log(err);
+        setError(err.message);
+        toast.error('Login failed!');
       });
   };
 
@@ -57,6 +62,7 @@ const Login = () => {
         <section className='login-form'>
           <input
             className='input-form'
+            name='email'
             type='email'
             placeholder='Enter Email'
             onChange={e => setEmail(e.target.value)}
@@ -64,11 +70,13 @@ const Login = () => {
           ></input>
           <input
             className='input-form'
+            name='password'
             type='password'
             placeholder='Enter Password'
             onChange={e => setPassword(e.target.value)}
             value={password}
           ></input>
+          {error && <span className='error-msg'>{error}</span>}
           <span className='forgot-password'>Forgot?</span>
           <p className='terms'>
             By continuing, you agree to Neukart's <span>Terms of Use</span> and

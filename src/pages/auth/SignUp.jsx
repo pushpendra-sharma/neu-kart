@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
+import { isEmail } from 'validator';
 import './Auth.css';
 import { signUpUser } from '../../redux/features/authSlice';
 
@@ -27,42 +28,22 @@ const SignUp = () => {
 
     switch (name) {
       case 'userName':
-        if (value.length === 0) {
-          errors.userName = 'Enter valid name';
-        } else {
-          errors.userName = '';
-        }
+        errors.userName = value.length !== 0 ? '' : 'Enter valid name';
         break;
       case 'mobile':
-        if (value.length !== 10) {
-          errors.mobile = 'Enter valid mobile number';
-        } else {
-          errors.mobile = '';
-        }
+        errors.mobile = value.length === 10 ? '' : 'Enter valid mobile number';
         break;
       case 'email':
-        if (value.length === 0) {
-          errors.email = 'Enter valid email';
-        } else {
-          errors.email = '';
-        }
+        errors.email = isEmail(value) ? '' : 'Enter valid email';
         break;
       case 'password':
-        if (value.length === 0) {
-          errors.password = 'Enter valid password';
-        } else {
-          errors.password = '';
-        }
+        errors.password = value.length !== 0 ? '' : 'Enter valid password';
         break;
-
       case 'confirmPassword':
-        if (value !== details.password) {
-          errors.confirmPassword = 'Password did not match';
-        } else {
-          errors.confirmPassword = '';
-        }
+        errors.confirmPassword =
+          value === details.password ? '' : 'Password did not match';
         break;
-    default:
+      default:
         break;
     }
 
@@ -75,13 +56,14 @@ const SignUp = () => {
     const phone = Number(mobile);
     const signUpData = { name, mobileNumber: phone, email, password };
     dispatch(signUpUser(signUpData))
+      .unwrap()
       .then(() => {
         toast.success('SignUp successfull!');
         navigate('/');
       })
       .catch(err => {
-        setError('Some Error occured');
-        console.log(err);
+        setError(err.message);
+        toast.error('SignUp failed!');
       });
   };
 
@@ -151,7 +133,7 @@ const SignUp = () => {
           <button className='btn-login' onClick={signUpHandler}>
             Sign Up
           </button>
-          {error && <span>{error}</span>}
+          {error && <span className='error-msg'>{error}</span>}
           <Link className='btn-existing-login' to='/login'>
             Existing User? Login in
           </Link>
