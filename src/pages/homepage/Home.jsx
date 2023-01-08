@@ -1,15 +1,22 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { getCart } from '../../redux/features/cartSlice';
 import { fetchProducts } from '../../redux/features/productSlice';
+import { getWishlistThunk } from '../../redux/features/wishListSlice';
 import './Home.css';
 
 const Home = () => {
   const dispatch = useDispatch();
+  const id = useSelector(state => state.user.profile._id);
 
   useEffect(() => {
     dispatch(fetchProducts());
-  }, [dispatch]);
+    if (id) {
+      dispatch(getCart());
+      dispatch(getWishlistThunk());
+    }
+  }, [id, dispatch]);
 
   return (
     <main className='main-container'>
