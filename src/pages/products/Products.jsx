@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
+import { Navigate } from 'react-router';
+import { connect, useSelector } from 'react-redux';
 import './Products.css';
 import { Card, Filter } from '../../components';
 import { allProductsSelector, filtersBySlector } from '../../redux/selectors';
 
-const Products = () => {
+const Products = ({ error }) => {
   const allProducts = useSelector(allProductsSelector);
   const { category, brand, availability, price, rating, discount } =
     useSelector(filtersBySlector);
@@ -53,14 +54,18 @@ const Products = () => {
 
   return (
     <>
-      <div className='products-container'>
-        <Filter />
-        <div className='products-filtered'>
-          {array.map(item => (
-            <Card key={item._id} data={item} />
-          ))}
+      {error ? (
+        <Navigate to='/error' replace={true} />
+      ) : (
+        <div className='products-container'>
+          <Filter />
+          <div className='products-filtered'>
+            {array.map(item => (
+              <Card key={item._id} data={item} />
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 };
@@ -75,4 +80,8 @@ Products.defaultProps = {
   items: [],
 };
 
-export default Products;
+const mapStateToProps = state => ({
+  error: state.products.error,
+});
+
+export default connect(mapStateToProps)(Products);
