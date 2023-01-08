@@ -40,10 +40,12 @@ const Card = props => {
             onClick={() => {
               if (id) {
                 dispatch(removeFromWishlistThunk(_id))
+                  .unwrap()
                   .then(() => {
                     toast.success('Item removed from Wishlist');
                   })
                   .catch(err => {
+                    toast.error('Something went wrong!');
                     console.log(err);
                   });
               } else {
@@ -59,10 +61,12 @@ const Card = props => {
             onClick={() => {
               if (id) {
                 dispatch(addToWishlistThunk(_id))
+                  .unwrap()
                   .then(() => {
                     toast.success('Item added to Wishlist');
                   })
                   .catch(err => {
+                    toast.error('Something went wrong!');
                     console.log(err);
                   });
               } else {
@@ -94,10 +98,12 @@ const Card = props => {
           onClick={() => {
             if (id) {
               dispatch(addToCartThunk(_id))
+                .unwrap()
                 .then(() => {
                   toast.success('Item added to Cart');
                 })
                 .catch(err => {
+                  toast.error('Something went wrong!');
                   console.log(err);
                 });
             } else {

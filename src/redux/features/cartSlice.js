@@ -18,27 +18,30 @@ export const getCart = createAsyncThunk(`cart/getItems`, async () => {
   }
 });
 
-export const addToCartThunk = createAsyncThunk(`cart/addItem`, async pid => {
-  try {
-    const id = sessionStorage.getItem('loginUserId');
-    const token = sessionStorage.getItem('token');
-    const resp = await addToCart(id, pid, token);
-    return resp.data;
-  } catch (error) {
-    return error.response.data;
+export const addToCartThunk = createAsyncThunk(
+  `cart/addItem`,
+  async (pid, { rejectWithValue }) => {
+    try {
+      const id = sessionStorage.getItem('loginUserId');
+      const token = sessionStorage.getItem('token');
+      const resp = await addToCart(id, pid, token);
+      return resp.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
   }
-});
+);
 
 export const removeFromCartThunk = createAsyncThunk(
   `cart/removeItem`,
-  async pid => {
+  async (pid, { rejectWithValue }) => {
     try {
       const id = sessionStorage.getItem('loginUserId');
       const token = sessionStorage.getItem('token');
       const resp = await removeFromCart(id, pid, token);
       return resp.data;
     } catch (error) {
-      return error.response.data;
+      return rejectWithValue(error.response.data);
     }
   }
 );
@@ -64,7 +67,7 @@ export const cartSlice = createSlice({
       })
       .addCase(getCart.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload;
+        state.error = action.payload.message;
       })
       .addCase(addToCartThunk.pending, state => {
         state.loading = true;
@@ -81,7 +84,7 @@ export const cartSlice = createSlice({
       })
       .addCase(addToCartThunk.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload;
+        state.error = action.payload.message;
       })
       .addCase(removeFromCartThunk.pending, state => {
         state.loading = false;

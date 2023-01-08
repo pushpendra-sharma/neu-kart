@@ -27,28 +27,28 @@ export const getWishlistThunk = createAsyncThunk(
 
 export const addToWishlistThunk = createAsyncThunk(
   `wishlist/addItem`,
-  async pid => {
+  async (pid, { rejectWithValue }) => {
     try {
       const id = sessionStorage.getItem('loginUserId');
       const token = sessionStorage.getItem('token');
       const res = await addToWishlist(id, pid, token);
       return res.data;
     } catch (error) {
-      return error.response.data;
+      return rejectWithValue(error.response.data);
     }
   }
 );
 
 export const removeFromWishlistThunk = createAsyncThunk(
   `wishlist/removeItem`,
-  async pid => {
+  async (pid, { rejectWithValue }) => {
     try {
       const id = sessionStorage.getItem('loginUserId');
       const token = sessionStorage.getItem('token');
       const res = await removeFromWishlist(id, pid, token);
       return res.data;
     } catch (error) {
-      return error.response.data;
+      return rejectWithValue(error.response.data);
     }
   }
 );
@@ -74,7 +74,7 @@ export const wishListSlice = createSlice({
       })
       .addCase(addToWishlistThunk.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload;
+        state.error = action.payload.message;
       })
       .addCase(removeFromWishlistThunk.pending, state => {
         state.loading = false;
@@ -91,7 +91,7 @@ export const wishListSlice = createSlice({
       })
       .addCase(removeFromWishlistThunk.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload;
+        state.error = action.payload.message;
       })
       .addCase(getWishlistThunk.pending, state => {
         state.loading = false;
@@ -108,7 +108,7 @@ export const wishListSlice = createSlice({
       })
       .addCase(getWishlistThunk.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload;
+        state.error = action.payload.message;
       });
   },
 });
