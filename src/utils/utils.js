@@ -14,7 +14,6 @@ const categories = [
   { label: 'Laptop', value: 'Laptop' },
 ];
 const customerRatings = [
-  { label: '5 & above', value: 5 },
   { label: '4 & above', value: 4 },
   { label: '3 & above', value: 3 },
   { label: '2 & above', value: 2 },
