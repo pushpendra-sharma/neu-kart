@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {
   filterByAvailability,
@@ -19,13 +19,14 @@ const RadioInput = props => {
   const handleChange = e => {
     setvalue(e.target.value);
     console.log(value);
-
-    // value 1 state behind
-    if (id === 'availability') dispatch(filterByAvailability(e.target.value));
-    if (id === 'discount') dispatch(filterByDiscount(Number(e.target.value)));
-    if (id === 'rating') dispatch(filterByRating(Number(e.target.value)));
-    if (id === 'sort') dispatch(sortBy(e.target.value));
   };
+
+  useEffect(() => {
+    if (id === 'availability') dispatch(filterByAvailability(value));
+    if (id === 'discount') dispatch(filterByDiscount(value));
+    if (id === 'rating') dispatch(filterByRating(value));
+    if (id === 'sort') dispatch(sortBy(value));
+  }, [value, id, dispatch]);
 
   return (
     <div className='filter-container'>
