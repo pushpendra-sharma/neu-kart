@@ -77,9 +77,15 @@ const Products = ({ error, loading }) => {
             </div>
           ) : (
             <div className='products-filtered'>
-              {array.map(item => (
-                <Card key={item._id} data={item} />
-              ))}
+              {array.length > 0 ? (
+                <>
+                  {array.map(item => (
+                    <Card key={item._id} data={item} />
+                  ))}
+                </>
+              ) : (
+                <p>No Products found for selected filters</p>
+              )}
             </div>
           )}
         </div>

@@ -18,7 +18,6 @@ const RadioInput = props => {
 
   const handleChange = e => {
     setvalue(e.target.value);
-    console.log(value);
   };
 
   useEffect(() => {
@@ -56,7 +55,6 @@ RadioInput.propTypes = {
   options: PropTypes.array.isRequired,
   title: PropTypes.string.isRequired,
   id: PropTypes.string,
-  // onChange: PropTypes.func.isRequired,
 };
 
 RadioInput.defaultProps = {
