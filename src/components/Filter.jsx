@@ -12,13 +12,22 @@ import {
   mobileBrands,
   laptopBrands,
 } from '../utils/utils';
+import useWindowDimensions from '../utils/useWindowDimensions';
 
 const Filter = () => {
   const [brands, setBrands] = useState([...mobileBrands, ...laptopBrands]);
 
   const { category } = useSelector(filtersBySlector);
 
-  const [active, setActive] = useState(true);
+  const [active, setActive] = useState(false);
+  const { width } = useWindowDimensions();
+
+  useEffect(() => {
+    if (width >= 768) {
+      console.log('dsghsg');
+      setActive(true);
+    }
+  }, [width]);
 
   useEffect(() => {
     if (category.length === 1 && category.includes('Mobile')) {

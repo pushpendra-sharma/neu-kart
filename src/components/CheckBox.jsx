@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import {
   filterByBrand,
@@ -18,11 +18,12 @@ const CheckBox = props => {
       ? values.concat(value)
       : values.filter(item => item !== value);
     setvalues(newState);
-
-    // values 1 state behind
-    if (id === 'category') dispatch(filterByCategory(newState));
-    if (id === 'brand') dispatch(filterByBrand(newState));
   };
+
+  useEffect(() => {
+    if (id === 'category') dispatch(filterByCategory(values));
+    if (id === 'brand') dispatch(filterByBrand(values));
+  }, [values, id, dispatch]);
 
   return (
     <div className='filter-container'>

@@ -14,7 +14,6 @@ const categories = [
   { label: 'Laptop', value: 'Laptop' },
 ];
 const customerRatings = [
-  { label: '5 & above', value: 5 },
   { label: '4 & above', value: 4 },
   { label: '3 & above', value: 3 },
   { label: '2 & above', value: 2 },
@@ -28,7 +27,7 @@ const discounts = [
 
 const radioInputOptions = [
   { label: 'Available', value: 'yes' },
-  { label: 'Include out of stock', value: 'no' },
+  { label: 'Include out of stock', value: '' },
 ];
 const sortOptions = [
   { label: 'Price: High to Low', value: 'priceHighToLow' },

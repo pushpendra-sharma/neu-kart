@@ -15,7 +15,7 @@ const initialProductState = {
   filterBy: {
     category: ['Mobile', 'Laptop'],
     brand: allBrands,
-    availability: 'All',
+    availability: '',
     price: 150000,
     rating: 0,
     discount: 0,

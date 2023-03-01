@@ -14,12 +14,13 @@ import {
   WishList,
 } from './pages';
 import { loginSelector } from './redux/selectors';
+import './App.css';
 
 function App() {
   const isAuth = useSelector(loginSelector);
 
   return (
-    <>
+    <div className='app' data-testid='app'>
       <ToastContainer
         position='bottom-center'
         theme='dark'
@@ -30,7 +31,7 @@ function App() {
         rtl={false}
         pauseOnFocusLoss
         draggable
-        pauseOnHover
+        pauseOnHover={false}
       />
       <Nav />
       <Routes>
@@ -58,7 +59,7 @@ function App() {
         <Route path='*' element={<Error />} />
       </Routes>
       <Footer />
-    </>
+    </div>
   );
 }
 

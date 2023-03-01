@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { filterByPrice } from '../redux/features/productSlice';
 import '../styles/Filter.css';
@@ -13,12 +13,11 @@ const InputRange = props => {
 
   const handleChange = e => {
     setvalue(Number(e.target.value));
-
-    // the value state is 1 iteration behind if we use inside this fucntion but outside ok
-    // controlled component?
-    // if (id === 'price') dispatch(filterByPrice(value));
-    if (id === 'price') dispatch(filterByPrice(Number(e.target.value)));
   };
+
+  useEffect(() => {
+    if (id === 'price') dispatch(filterByPrice(value));
+  }, [value, id, dispatch]);
 
   return (
     <div className='filter-container'>
