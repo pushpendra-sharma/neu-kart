@@ -27,7 +27,7 @@ const discounts = [
 
 const radioInputOptions = [
   { label: 'Available', value: 'yes' },
-  { label: 'Include out of stock', value: 'no' },
+  { label: 'Include out of stock', value: '' },
 ];
 const sortOptions = [
   { label: 'Price: High to Low', value: 'priceHighToLow' },

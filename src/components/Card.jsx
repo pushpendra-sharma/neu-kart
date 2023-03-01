@@ -22,6 +22,7 @@ const Card = props => {
     rating,
     imageUrl,
     _id,
+    availability,
   } = props.data;
   const id = sessionStorage.getItem('loginUserId');
 
@@ -88,13 +89,19 @@ const Card = props => {
       </p>
       <p className='features'>{features}</p>
       <p className='discount'>{offer}</p>
+      {availability ? (
+        <p className='discount'>Available</p>
+      ) : (
+        <p className='unavailable'>Out of stock</p>
+      )}
       {cartItems.includes(_id) ? (
         <Link to='/cart' className='card-btn go-cart-btn'>
           Go to Cart
         </Link>
       ) : (
         <button
-          className='card-btn add-cart-btn'
+          className={availability ? 'card-btn add-cart-btn' : 'faded-btn'}
+          disabled={!availability}
           onClick={() => {
             if (id) {
               dispatch(addToCartThunk(_id))

@@ -35,7 +35,9 @@ const Products = ({ error, loading }) => {
   }, [discount, allProducts]);
 
   useEffect(() => {
-    setArray(allProducts.filter(item => item.availability === availability));
+    if (availability === 'yes')
+      setArray(allProducts.filter(item => item.availability));
+    else setArray(allProducts);
   }, [availability, allProducts]);
 
   useEffect(() => {
