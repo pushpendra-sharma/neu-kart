@@ -14,13 +14,13 @@ import {
   WishList,
 } from './pages';
 import { loginSelector } from './redux/selectors';
-import './App.css'
+import './App.css';
 
 function App() {
   const isAuth = useSelector(loginSelector);
 
   return (
-    <div className='app'>
+    <div className='app' data-testid='app'>
       <ToastContainer
         position='bottom-center'
         theme='dark'
