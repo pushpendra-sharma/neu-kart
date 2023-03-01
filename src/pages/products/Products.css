@@ -22,8 +22,9 @@
   }
 }
 
-.loader{
-  position:relative;
+.loader {
+  margin: 8rem 0;
+  padding: 8rem;
   display: flex;
   justify-content: center;
   align-items: center;
