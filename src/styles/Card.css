@@ -81,6 +81,12 @@
   font-weight: bold;
 }
 
+.unavailable {
+  color: var(--color-text-grey);
+  font-size: small;
+  font-weight: bold;
+}
+
 .strike-price {
   text-decoration: line-through;
   margin: 0 1rem;
@@ -108,6 +114,17 @@
 
 .go-cart-btn {
   background-color: var(--color-orange);
+}
+
+.faded-btn{
+  padding: 0.5rem;
+  font-size: medium;
+  font-weight: bold;
+  border-radius: 0.1rem;
+  color: var(--color-white);
+  text-decoration: none;
+  background-color: var(--color-text-grey);
+  border: 0px;
 }
 
 .delete-icon {

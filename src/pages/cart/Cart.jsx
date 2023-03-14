@@ -1,20 +1,13 @@
 import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import emptyImage from '../../images/emptyImage.webp';
 import './Cart.css';
 import { CartCard, PriceDetails } from '../../components';
 import { allProductsSelector, cartItemsSelector } from '../../redux/selectors';
-import { getCart } from '../../redux/features/cartSlice';
 
 const Cart = () => {
   const cartItems = useSelector(cartItemsSelector);
   const products = useSelector(allProductsSelector);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getCart());
-  }, [dispatch]);
 
   return (
     <>

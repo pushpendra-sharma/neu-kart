@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
+import { Navigate } from 'react-router';
+import { connect, useSelector } from 'react-redux';
+import { Puff } from 'react-loader-spinner';
 import './Products.css';
 import { Card, Filter } from '../../components';
 import { allProductsSelector, filtersBySlector } from '../../redux/selectors';
 
-const Products = () => {
+const Products = ({ error, loading }) => {
   const allProducts = useSelector(allProductsSelector);
   const { category, brand, availability, price, rating, discount } =
     useSelector(filtersBySlector);
@@ -33,7 +35,9 @@ const Products = () => {
   }, [discount, allProducts]);
 
   useEffect(() => {
-    setArray(allProducts.filter(item => item.availability === availability));
+    if (availability === 'yes')
+      setArray(allProducts.filter(item => item.availability));
+    else setArray(allProducts);
   }, [availability, allProducts]);
 
   useEffect(() => {
@@ -53,14 +57,39 @@ const Products = () => {
 
   return (
     <>
-      <div className='products-container'>
-        <Filter />
-        <div className='products-filtered'>
-          {array.map(item => (
-            <Card key={item._id} data={item} />
-          ))}
+      {error ? (
+        <Navigate to='/error' replace={true} />
+      ) : (
+        <div className='products-container'>
+          <Filter />
+          {loading ? (
+            <div className='loader'>
+              <Puff
+                height='80'
+                width='80'
+                radius={1}
+                color='#2874f0'
+                ariaLabel='puff-loading'
+                wrapperStyle={{}}
+                wrapperClass=''
+                visible={true}
+              />
+            </div>
+          ) : (
+            <div className='products-filtered'>
+              {array.length > 0 ? (
+                <>
+                  {array.map(item => (
+                    <Card key={item._id} data={item} />
+                  ))}
+                </>
+              ) : (
+                <p>No Products found for selected filters</p>
+              )}
+            </div>
+          )}
         </div>
-      </div>
+      )}
     </>
   );
 };
@@ -75,4 +104,10 @@ Products.defaultProps = {
   items: [],
 };
 
-export default Products;
+const mapStateToProps = state => ({
+  error: state.products.error,
+  loading: state.products.loading,
+  success: state.products.success,
+});
+
+export default connect(mapStateToProps)(Products);

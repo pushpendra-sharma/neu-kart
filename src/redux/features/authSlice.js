@@ -20,28 +20,28 @@ const initialUserState = {
 
 export const loginUser = createAsyncThunk(
   `user/loginAction`,
-  async loginData => {
+  async (loginData, { rejectWithValue }) => {
     try {
       const resp = await login(loginData);
       sessionStorage.setItem('loginUserId', resp.data.user._id);
       sessionStorage.setItem('token', resp.data.token);
       return resp.data;
     } catch (error) {
-      return error.response.data;
+      return rejectWithValue(error.response.data);
     }
   }
 );
 
 export const signUpUser = createAsyncThunk(
   `user/signUpAction`,
-  async signUpData => {
+  async (signUpData, { rejectWithValue }) => {
     try {
       const resp = await signUp(signUpData);
       sessionStorage.setItem('loginUserId', resp.data.user._id);
       sessionStorage.setItem('token', resp.data.token);
       return resp.data;
     } catch (error) {
-      return error.response.data;
+      return rejectWithValue(error.response.data);
     }
   }
 );
@@ -95,7 +95,7 @@ export const authSlice = createSlice({
       })
       .addCase(signUpUser.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload;
+        state.error = action.payload.message;
       });
   },
 });
