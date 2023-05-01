@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { login, signUp } from '../../services';
+import { instance } from '../../services';
 
 const initialUserState = {
   loading: false,
@@ -22,10 +22,11 @@ export const loginUser = createAsyncThunk(
   `user/loginAction`,
   async (loginData, { rejectWithValue }) => {
     try {
-      const resp = await login(loginData);
-      sessionStorage.setItem('loginUserId', resp.data.user._id);
-      sessionStorage.setItem('token', resp.data.token);
-      return resp.data;
+      const response = await instance.post('/users/login', loginData);
+      sessionStorage.setItem('loginUserId', response.data.user._id);
+      sessionStorage.setItem('token', response.data.token);
+
+      return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
     }
@@ -36,10 +37,11 @@ export const signUpUser = createAsyncThunk(
   `user/signUpAction`,
   async (signUpData, { rejectWithValue }) => {
     try {
-      const resp = await signUp(signUpData);
-      sessionStorage.setItem('loginUserId', resp.data.user._id);
-      sessionStorage.setItem('token', resp.data.token);
-      return resp.data;
+      const response = await instance.post('/users/login', signUpData);
+      sessionStorage.setItem('loginUserId', response.data.user._id);
+      sessionStorage.setItem('token', response.data.token);
+
+      return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
     }

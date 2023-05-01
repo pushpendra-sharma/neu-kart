@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { laptopBrands, mobileBrands } from '../../utils/utils';
-import { getAllProducts } from '../../services';
+import { instance } from '../../services';
 
 const allBrands = [
   ...mobileBrands.map(item => item.value),
@@ -27,8 +27,8 @@ export const fetchProducts = createAsyncThunk(
   `products/fetchItems`,
   async () => {
     try {
-      const resp = await getAllProducts();
-      return resp.data;
+      const response = await instance.get('/products');
+      return response.data;
     } catch (error) {
       return error.response.data;
     }
