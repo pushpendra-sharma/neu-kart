@@ -5,6 +5,7 @@ import { loginSelector, userNameSelector } from '../redux/selectors';
 import { signOut } from '../redux/features/authSlice';
 import { clearWishlistAction } from '../redux/features/wishListSlice';
 import { clearCartAction } from '../redux/features/cartSlice';
+import Search from './Search';
 
 const Nav = () => {
   const dispatch = useDispatch();
@@ -18,10 +19,7 @@ const Nav = () => {
           <Link className='link nav-brand' to='/'>
             Neukart
           </Link>
-          <input
-            className='nav-searchbar'
-            placeholder='Search for products, brands...'
-          />
+          <Search />
         </div>
         <div className='nav-item'>
           {loginCheck && (
