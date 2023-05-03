@@ -6,3 +6,4 @@ export { default as Cart } from './cart/Cart';
 export { default as Error } from './error/Error';
 export { default as Products } from './products/Products';
 export { default as WishList } from './wishList/WishList';
+export { default as ProductDetails } from './productDetails/ProductDetails';

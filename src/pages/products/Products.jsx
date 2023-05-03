@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Navigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import { connect, useSelector } from 'react-redux';
 import { Puff } from 'react-loader-spinner';
 import './Products.css';
@@ -8,6 +9,7 @@ import { Card, Filter } from '../../components';
 import { allProductsSelector, filtersBySlector } from '../../redux/selectors';
 
 const Products = ({ error, loading }) => {
+  const navigate = useNavigate();
   const allProducts = useSelector(allProductsSelector);
   const { category, brand, availability, price, rating, discount } =
     useSelector(filtersBySlector);
@@ -80,7 +82,13 @@ const Products = ({ error, loading }) => {
               {array.length > 0 ? (
                 <>
                   {array.map(item => (
-                    <Card key={item._id} data={item} />
+                    <div
+                      className='product-link'
+                      onClick={() => navigate(`/product/${item._id}`)}
+                      key={item._id}
+                    >
+                      <Card data={item} />
+                    </div>
                   ))}
                 </>
               ) : (

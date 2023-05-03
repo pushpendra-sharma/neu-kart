@@ -1,0 +1,131 @@
+@media screen and (max-width: 768px) {
+  .item-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    width: 100%;
+    gap: 1rem;
+  }
+
+  .item-img-container {
+    position: relative;
+    max-width: 375px;
+    width: 100%;
+  }
+
+  .item-photo {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .item-details {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .item-container {
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+    gap: 2rem;
+  }
+
+  .item-img-container {
+    position: relative;
+  }
+
+  .item-photo {
+    width: 100%;
+  }
+
+  .item-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+}
+
+.item-heading {
+  font-weight: bolder;
+}
+
+.item-desc {
+  font-size: medium;
+}
+
+.item-rating {
+  font-size: small;
+  color: var(--color-primary);
+}
+
+.item-price-details {
+  display: flex;
+  gap: 1rem;
+  font-size: larger;
+}
+
+.item-price {
+  font-weight: bold;
+}
+
+.item-mrp {
+  text-decoration: line-through;
+  font-weight: bold;
+  color: var(--color-text-grey);
+}
+
+.item-discount {
+  color: var(--color-green);
+  font-weight: bold;
+}
+
+.item-features {
+  font-size: medium;
+  color: cadetblue;
+}
+
+.item-offer {
+  color: var(--color-green);
+  font-weight: bold;
+}
+
+.item-available {
+  color: var(--color-green);
+  font-size: small;
+  font-weight: bold;
+}
+
+.item-unavailable {
+  color: var(--color-text-grey);
+  font-size: small;
+  font-weight: bold;
+}
+
+.btn-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: 0;
+}
+
+.buy-btn {
+  width: 50%;
+  padding: 1rem 2rem;
+  font-size: medium;
+  border: 0px;
+  cursor: pointer;
+  font-weight: bold;
+  color: var(--color-white);
+  text-decoration: none;
+  background-color: var(--color-light-yellow);
+}

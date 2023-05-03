@@ -53,3 +53,8 @@
     box-shadow: 1px 1px 5px rgb(0 0 0 / 0.2);
   }
 }
+
+.product-link {
+  cursor: pointer;
+  text-decoration: none;
+}

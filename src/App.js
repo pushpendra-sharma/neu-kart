@@ -8,6 +8,7 @@ import {
   Error,
   Home,
   Login,
+  ProductDetails,
   Products,
   RequiresAuth,
   SignUp,
@@ -47,6 +48,7 @@ function App() {
           }
         />
         <Route path='/products' element={<Products />} />
+        <Route path='/product/:productId' element={<ProductDetails />} />
         <Route
           path='/wishlist'
           element={
