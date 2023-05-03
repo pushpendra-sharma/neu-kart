@@ -1,14 +1,6 @@
 import PropTypes from 'prop-types';
-import { toast } from 'react-toastify';
-import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
 import '../styles/Card.css';
-import {
-  addToWishlistThunk,
-  removeFromWishlistThunk,
-} from '../redux/features/wishListSlice';
-import { cartItemsSelector, wishListItemsSelector } from '../redux/selectors';
-import { addToCartThunk } from '../redux/features/cartSlice';
+import { CartButton, WishListButton } from './';
 
 const Card = props => {
   const {
@@ -24,60 +16,12 @@ const Card = props => {
     _id,
     availability,
   } = props.data;
-  const id = sessionStorage.getItem('loginUserId');
-
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const wishListItems = useSelector(wishListItemsSelector);
-  const cartItems = useSelector(cartItemsSelector);
 
   return (
     <div className='card-container'>
       <div className='card-img'>
         <img src={imageUrl} alt='product' className='card-photo'></img>
-        {wishListItems.includes(_id) ? (
-          <span
-            className='material-symbols-outlined wishlist-icon-active'
-            onClick={() => {
-              if (id) {
-                dispatch(removeFromWishlistThunk(_id))
-                  .unwrap()
-                  .then(() => {
-                    toast.success('Item removed from Wishlist');
-                  })
-                  .catch(err => {
-                    toast.error('Something went wrong!');
-                    console.log(err);
-                  });
-              } else {
-                navigate('/login');
-              }
-            }}
-          >
-            favorite
-          </span>
-        ) : (
-          <span
-            className='material-symbols-outlined wishlist-icon'
-            onClick={() => {
-              if (id) {
-                dispatch(addToWishlistThunk(_id))
-                  .unwrap()
-                  .then(() => {
-                    toast.success('Item added to Wishlist');
-                  })
-                  .catch(err => {
-                    toast.error('Something went wrong!');
-                    console.log(err);
-                  });
-              } else {
-                navigate('/login');
-              }
-            }}
-          >
-            favorite
-          </span>
-        )}
+        <WishListButton id={_id} />
       </div>
       <h3 className='card-main-heading'>{productName}</h3>
       <p className='card-desc'>{description}</p>
@@ -94,33 +38,7 @@ const Card = props => {
       ) : (
         <p className='unavailable'>Out of stock</p>
       )}
-      {cartItems.includes(_id) ? (
-        <Link to='/cart' className='card-btn go-cart-btn'>
-          Go to Cart
-        </Link>
-      ) : (
-        <button
-          className={availability ? 'card-btn add-cart-btn' : 'faded-btn'}
-          disabled={!availability}
-          onClick={() => {
-            if (id) {
-              dispatch(addToCartThunk(_id))
-                .unwrap()
-                .then(() => {
-                  toast.success('Item added to Cart');
-                })
-                .catch(err => {
-                  toast.error('Something went wrong!');
-                  console.log(err);
-                });
-            } else {
-              navigate('/login');
-            }
-          }}
-        >
-          Add to Cart
-        </button>
-      )}
+      <CartButton id={_id} availability={availability} type='add' />
     </div>
   );
 };

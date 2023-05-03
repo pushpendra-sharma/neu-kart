@@ -9,7 +9,7 @@
   border: 0px;
 }
 
-.add-to-cart-btn{
+.add-to-cart-btn {
   background-color: var(--color-yellow);
 }
 
@@ -28,4 +28,9 @@
   text-decoration: none;
   background-color: var(--color-text-grey);
   border: 0px;
+}
+
+.delete-btn {
+  cursor: pointer;
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48;
 }

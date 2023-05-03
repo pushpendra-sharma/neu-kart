@@ -3,10 +3,13 @@ import '../styles/CartButton.css';
 import { toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCartThunk } from '../redux/features/cartSlice';
+import {
+  addToCartThunk,
+  removeFromCartThunk,
+} from '../redux/features/cartSlice';
 import { cartItemsSelector, loginSelector } from '../redux/selectors';
 
-const CartButton = ({ id, availability }) => {
+const CartButton = ({ id, availability, type }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -34,6 +37,29 @@ const CartButton = ({ id, availability }) => {
       toast.info('Currently unavailable!');
     }
   };
+
+  const handleRemoveFromCart = e => {
+    e.stopPropagation();
+
+    dispatch(removeFromCartThunk(id))
+      .then(() => {
+        toast.success('Item removed from Cart');
+      })
+      .catch(err => {
+        toast.error('Something went wrong!');
+      });
+  };
+
+  if (type === 'remove') {
+    return (
+      <span
+        className='material-symbols-outlined delete-btn'
+        onClick={handleRemoveFromCart}
+      >
+        delete
+      </span>
+    );
+  }
 
   return (
     <>

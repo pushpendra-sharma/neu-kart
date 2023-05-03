@@ -47,9 +47,11 @@ const WishListButton = ({ id }) => {
           toast.error('Something went wrong!');
         });
     } else {
+      toast.info('Please login first!');
       navigate('/login');
     }
   };
+
   return (
     <>
       {wishListItems.includes(id) ? (

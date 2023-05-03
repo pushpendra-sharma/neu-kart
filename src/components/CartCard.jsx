@@ -1,8 +1,6 @@
 import PropTypes from 'prop-types';
 import '../styles/Card.css';
-import { useDispatch } from 'react-redux';
-import { removeFromCartThunk } from '../redux/features/cartSlice';
-import { toast } from 'react-toastify';
+import CartButton from './CartButton';
 
 const CartCard = props => {
   const {
@@ -18,7 +16,6 @@ const CartCard = props => {
     _id,
   } = props.data;
 
-  const dispatch = useDispatch();
   return (
     <div className='card-container'>
       <div className='card-img'>
@@ -34,20 +31,7 @@ const CartCard = props => {
       </p>
       <p className='features'>{features}</p>
       <p className='discount'>{offer}</p>
-      <span
-        className='material-symbols-outlined delete-icon'
-        onClick={() => {
-          dispatch(removeFromCartThunk(_id))
-            .then(() => {
-              toast.success('Item removed from Cart');
-            })
-            .catch(err => {
-              console.log(err);
-            });
-        }}
-      >
-        delete
-      </span>
+      <CartButton id={_id} type='remove' />
     </div>
   );
 };
