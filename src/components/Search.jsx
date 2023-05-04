@@ -6,7 +6,7 @@ import '../styles/Search.css';
 
 const Search = () => {
   const [query, setQuery] = useState('');
-  const [showSuggestions, setShowSuggestions] = useState(false);
+  const [inputFocus, setInputFocus] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -24,14 +24,16 @@ const Search = () => {
   }, [suggestions, query, dispatch]);
 
   const handleInputFocus = () => {
-    setShowSuggestions(true);
+    setInputFocus(true);
   };
 
-  /*
   const handleInputBlur = () => {
-    setShowSuggestions(false);
+    setInputFocus(false);
   };
-  */
+
+  const callback = () => {
+    setInputFocus(false);
+  };
 
   return (
     <div className='search-container'>
@@ -42,9 +44,13 @@ const Search = () => {
         onChange={e => setQuery(e.target.value)}
         value={query}
         onFocus={handleInputFocus}
-        // onBlur={handleInputBlur}
+        onBlur={handleInputBlur}
       ></input>
-      {showSuggestions && <Suggestions data={suggestions} />}
+      <Suggestions
+        data={suggestions}
+        callback={callback}
+        isInputFocus={inputFocus}
+      />
     </div>
   );
 };

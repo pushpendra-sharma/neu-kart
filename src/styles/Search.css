@@ -41,7 +41,7 @@
 
 .suggestions-container {
   position: absolute;
-  top:2.2rem;
+  top: 2.2rem;
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -49,6 +49,7 @@
   overflow-y: scroll;
   border: 1px solid var(--color-bg-grey);
   background-color: white;
+  z-index: 2;
 }
 
 .product-link {
@@ -60,9 +61,9 @@
   text-decoration: none;
   font-size: small;
   padding: 0.5rem 1rem;
-color:black
+  color: black;
 }
 
-.suggestion:hover{
-    background-color: var(--color-bg-grey);
+.suggestion:hover {
+  background-color: var(--color-bg-grey);
 }

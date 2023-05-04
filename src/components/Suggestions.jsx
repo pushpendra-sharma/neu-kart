@@ -1,8 +1,27 @@
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/Search.css';
 
-const Suggestions = ({ data }) => {
-  return (
+const Suggestions = ({ data, callback, isInputFocus }) => {
+  const [timerId, seTimerId] = useState(null);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const navigate = useNavigate();
+
+  const handleSuggestionClick = id => {
+    const tid = setTimeout(callback, 0);
+    navigate(`/product/${id}`);
+    seTimerId(tid);
+  };
+
+  useEffect(() => {
+    return clearTimeout(timerId);
+  }, [timerId]);
+
+  useEffect(() => {
+    setShowSuggestions(isInputFocus);
+  }, [isInputFocus]);
+
+  return showSuggestions ? (
     <div className='suggestions-container'>
       {data && data.length ? (
         <>
@@ -10,14 +29,13 @@ const Suggestions = ({ data }) => {
             const { id, name } = item;
             return (
               id && (
-                <Link
-                  to={`/product/${id}`}
+                <p
                   key={id}
-                  replace={true}
-                  className='product-link'
+                  className='suggestion'
+                  onMouseDown={() => handleSuggestionClick(id)}
                 >
-                  <p className='suggestion'>{name}</p>
-                </Link>
+                  {name}
+                </p>
               )
             );
           })}
@@ -26,7 +44,7 @@ const Suggestions = ({ data }) => {
         <p className='suggestion'>No item found!</p>
       )}
     </div>
-  );
+  ) : null;
 };
 
 export default Suggestions;
