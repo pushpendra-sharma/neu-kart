@@ -1,17 +1,6 @@
-.card-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
 .features {
   font-size: medium;
 }
-
-/* .card-desc {
-  font-size: small; 
-   color: var(--color-text-grey);
-} */
 
 .card-img {
   display: block;
@@ -22,22 +11,6 @@
 
 .card-img > .card-photo {
   width: 80%;
-}
-
-.wishlist-icon {
-  position: absolute;
-  right: 0.5rem;
-  color: rgb(177, 197, 205);
-  cursor: pointer;
-  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48;
-}
-
-.wishlist-icon-active {
-  position: absolute;
-  right: 0.5rem;
-  cursor: pointer;
-  color: rgb(255, 57, 47);
-  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48;
 }
 
 .card-container {
@@ -62,19 +35,6 @@
   box-shadow: 1px 1px 5px rgb(0 0 0 / 0.2);
 }
 
-.item-price {
-  display: flex;
-  gap: 10px;
-}
-
-.item-price-display {
-  font-size: small;
-}
-
-.item-price-mrp {
-  text-decoration: line-through;
-}
-
 .discount {
   color: var(--color-green);
   font-size: small;
@@ -91,43 +51,4 @@
   text-decoration: line-through;
   margin: 0 1rem;
   color: var(--color-text-grey);
-}
-
-.card-footer {
-  padding: 1rem 0;
-}
-
-.card-btn {
-  padding: 0.5rem;
-  font-size: medium;
-  font-weight: bold;
-  border-radius: 0.1rem;
-  color: var(--color-white);
-  text-decoration: none;
-}
-
-.add-cart-btn {
-  background-color: var(--color-yellow);
-  border: 0px;
-  cursor: pointer;
-}
-
-.go-cart-btn {
-  background-color: var(--color-orange);
-}
-
-.faded-btn{
-  padding: 0.5rem;
-  font-size: medium;
-  font-weight: bold;
-  border-radius: 0.1rem;
-  color: var(--color-white);
-  text-decoration: none;
-  background-color: var(--color-text-grey);
-  border: 0px;
-}
-
-.delete-icon {
-  cursor: pointer;
-  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48;
 }

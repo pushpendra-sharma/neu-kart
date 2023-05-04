@@ -1,9 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import {
-  addToWishlist,
-  getWishlistItems,
-  removeFromWishlist,
-} from '../../services';
+import { instance } from '../../services';
 
 const wishlistState = {
   items: [],
@@ -15,10 +11,9 @@ export const getWishlistThunk = createAsyncThunk(
   `wishlist/getItems`,
   async () => {
     try {
-      const id = sessionStorage.getItem('loginUserId');
-      const token = sessionStorage.getItem('token');
-      const resp = await getWishlistItems(id, token);
-      return resp.data;
+      const userId = sessionStorage.getItem('loginUserId');
+      const response = await instance.get(`/wishlist/${userId}`);
+      return response.data;
     } catch (error) {
       return error.response.data;
     }
@@ -27,12 +22,13 @@ export const getWishlistThunk = createAsyncThunk(
 
 export const addToWishlistThunk = createAsyncThunk(
   `wishlist/addItem`,
-  async (pid, { rejectWithValue }) => {
+  async (productId, { rejectWithValue }) => {
     try {
-      const id = sessionStorage.getItem('loginUserId');
-      const token = sessionStorage.getItem('token');
-      const res = await addToWishlist(id, pid, token);
-      return res.data;
+      const userId = sessionStorage.getItem('loginUserId');
+      const response = await instance.post(
+        `/wishlist/add/${userId}/${productId}`
+      );
+      return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
     }
@@ -41,12 +37,13 @@ export const addToWishlistThunk = createAsyncThunk(
 
 export const removeFromWishlistThunk = createAsyncThunk(
   `wishlist/removeItem`,
-  async (pid, { rejectWithValue }) => {
+  async (productId, { rejectWithValue }) => {
     try {
-      const id = sessionStorage.getItem('loginUserId');
-      const token = sessionStorage.getItem('token');
-      const res = await removeFromWishlist(id, pid, token);
-      return res.data;
+      const userId = sessionStorage.getItem('loginUserId');
+      const response = await instance.delete(
+        `/wishlist/remove/${userId}/${productId}`
+      );
+      return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
     }

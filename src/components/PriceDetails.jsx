@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
 import '../styles/PriceDetails.css';
 import { allProductsSelector, cartItemsSelector } from '../redux/selectors';
@@ -53,7 +54,7 @@ const PriceDetails = props => {
         <p className='green-text'>
           You will save ₹{cartDetails.mrp - cartDetails.price} on this order
         </p>
-        <button className='btn-order'>Place Order</button>
+        <button className='btn-order' onClick={()=>toast.info('Place order option not available now')}>Place Order</button>
       </section>
     </div>
   );

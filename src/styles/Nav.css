@@ -23,15 +23,6 @@
     gap: 10px;
     padding: 0 0.1rem;
   }
-
-  .nav-searchbar {
-    min-width: 220px;
-    padding: 0.2rem 0.4rem;
-    font-size: medium;
-    border-radius: 0.1rem;
-    border: 0px;
-    flex-grow: 4;
-  }
 }
 
 @media screen and (min-width: 768px) {
@@ -52,14 +43,6 @@
     align-items: center;
     gap: 10px;
   }
-
-  .nav-searchbar {
-    min-width: 300px;
-    padding: 0.5rem 1rem;
-    font-size: medium;
-    border-radius: 0.1rem;
-    border: 0px;
-  }
 }
 
 .nav-name {
@@ -71,13 +54,6 @@
   text-decoration: none;
   color: inherit;
   font-size: large;
-}
-
-/* right */
-.nav-searchbar:focus {
-  border-radius: 0.1rem;
-  border: 0px;
-  outline: none;
 }
 
 .link {

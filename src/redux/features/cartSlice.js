@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { addToCart, getCartItems, removeFromCart } from '../../services';
+import { instance } from '../../services';
 
 const cartState = {
   items: [],
@@ -9,10 +9,9 @@ const cartState = {
 
 export const getCart = createAsyncThunk(`cart/getItems`, async () => {
   try {
-    const id = sessionStorage.getItem('loginUserId');
-    const token = sessionStorage.getItem('token');
-    const resp = await getCartItems(id, token);
-    return resp.data;
+    const userId = sessionStorage.getItem('loginUserId');
+    const response = await instance.get(`/cart/${userId}`);
+    return response.data;
   } catch (error) {
     return error.response.data;
   }
@@ -20,12 +19,11 @@ export const getCart = createAsyncThunk(`cart/getItems`, async () => {
 
 export const addToCartThunk = createAsyncThunk(
   `cart/addItem`,
-  async (pid, { rejectWithValue }) => {
+  async (productId, { rejectWithValue }) => {
     try {
-      const id = sessionStorage.getItem('loginUserId');
-      const token = sessionStorage.getItem('token');
-      const resp = await addToCart(id, pid, token);
-      return resp.data;
+      const userId = sessionStorage.getItem('loginUserId');
+      const response = await instance.post(`/cart/add/${userId}/${productId}`);
+      return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
     }
@@ -34,12 +32,13 @@ export const addToCartThunk = createAsyncThunk(
 
 export const removeFromCartThunk = createAsyncThunk(
   `cart/removeItem`,
-  async (pid, { rejectWithValue }) => {
+  async (productId, { rejectWithValue }) => {
     try {
-      const id = sessionStorage.getItem('loginUserId');
-      const token = sessionStorage.getItem('token');
-      const resp = await removeFromCart(id, pid, token);
-      return resp.data;
+      const userId = sessionStorage.getItem('loginUserId');
+      const response = await instance.delete(
+        `/cart/remove/${userId}/${productId}`
+      );
+      return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
     }

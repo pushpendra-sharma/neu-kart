@@ -1,0 +1,36 @@
+.cart-btn {
+  min-width: 50%;
+  padding: 1rem 2rem;
+  font-size: medium;
+  font-weight: bold;
+  color: var(--color-white);
+  text-decoration: none;
+  cursor: pointer;
+  border: 0px;
+}
+
+.add-to-cart-btn {
+  background-color: var(--color-yellow);
+}
+
+.go-cart-btn {
+  background-color: var(--color-orange);
+}
+
+.faded-cart-btn {
+  min-width: 50%;
+  padding: 1rem 2rem;
+  font-size: medium;
+  border: 0px;
+  cursor: pointer;
+  font-weight: bold;
+  color: var(--color-white);
+  text-decoration: none;
+  background-color: var(--color-text-grey);
+  border: 0px;
+}
+
+.delete-btn {
+  cursor: pointer;
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+}
