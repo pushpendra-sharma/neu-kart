@@ -24,7 +24,6 @@ const Filter = () => {
 
   useEffect(() => {
     if (width >= 768) {
-      console.log('dsghsg');
       setActive(true);
     }
   }, [width]);
