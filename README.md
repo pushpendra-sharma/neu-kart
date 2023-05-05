@@ -3,6 +3,8 @@ NeuKart is an e-commerce store for electronic gadgets mobiles & laptops.
 
 ## Preview
 
+https://user-images.githubusercontent.com/79936276/236505652-49bd98b3-afeb-4c40-9972-405e3f5739e5.mp4
+
 
 ## Tech Stack
 
@@ -13,6 +15,8 @@ NeuKart is an e-commerce store for electronic gadgets mobiles & laptops.
 ## Features
 
 - Homepage
+- search for products using debouncing
+- product details page
 - Product Listing Page with various filters & sortBy Price
 - Cart: Add/remove products to cart or add to wishlist
 - Wishlist: Add to wishlist, remove from wishlist, add to cart from wishlist
@@ -21,7 +25,6 @@ NeuKart is an e-commerce store for electronic gadgets mobiles & laptops.
 ## Things To Add
 
 - Checkout page
-- Product search
 
 ## 🔗 Connect With Me
 
