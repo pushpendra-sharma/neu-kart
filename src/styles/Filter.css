@@ -54,6 +54,7 @@
   color: var(--color-primary);
   font-size: small;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .list-non-bullet {

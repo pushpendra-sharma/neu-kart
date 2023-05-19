@@ -62,6 +62,7 @@
   font-size: small;
   padding: 0.5rem 1rem;
   color: black;
+  cursor: pointer;
 }
 
 .suggestion:hover {
