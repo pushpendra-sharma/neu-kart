@@ -68,6 +68,11 @@
 
 .list-item > label {
   padding-left: 0.8rem;
+  cursor: pointer;
+}
+
+.list-item > input {
+  cursor: pointer;
 }
 
 .filter-criteria-title-container {

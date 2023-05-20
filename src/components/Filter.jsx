@@ -4,10 +4,10 @@ import { CheckBox, InputRange, RadioInput } from './index';
 import '../styles/Filter.css';
 import { filtersBySlector } from '../redux/selectors';
 import {
+  availabilityOptions,
   categories,
   discounts,
   customerRatings,
-  radioInputOptions,
   sortOptions,
   mobileBrands,
   laptopBrands,
@@ -67,7 +67,7 @@ const Filter = () => {
             <RadioInput
               title='AVAILABILITY'
               id='availability'
-              options={radioInputOptions}
+              options={availabilityOptions}
             />
             <RadioInput title='Sort By' id='sort' options={sortOptions} />
           </>

@@ -8,12 +8,10 @@ import {
   sortBy,
 } from '../redux/features/productSlice';
 import '../styles/Filter.css';
+import ClearButton from './ClearButton';
 
-const RadioInput = props => {
-  const { options, title, id } = props;
-
+const RadioInput = ({ options, title, id }) => {
   const dispatch = useDispatch();
-
   const [value, setvalue] = useState('');
 
   const handleChange = e => {
@@ -31,6 +29,7 @@ const RadioInput = props => {
     <div className='filter-container'>
       <p className='filter-criteria-title-container'>
         <span className='filter-criteria-title'>{title}</span>
+        <ClearButton callback={() => setvalue('')} active={Boolean(value)} />
       </p>
       <ul className='list-non-bullet'>
         {options.map(item => (
@@ -39,11 +38,14 @@ const RadioInput = props => {
               name={title}
               type='radio'
               id={item.label}
-              className='check-input'
+              className='radio-input'
               onChange={e => handleChange(e)}
               value={item.value}
+              checked={value === item.value}
             />
-            <label htmlFor={item.label}>{item.label}</label>
+            <label htmlFor={item.label} className='radio-label'>
+              {item.label}
+            </label>
           </li>
         ))}
       </ul>
