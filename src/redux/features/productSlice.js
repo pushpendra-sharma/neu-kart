@@ -13,9 +13,9 @@ const initialProductState = {
   error: '',
   sortBy: 'none',
   filterBy: {
-    category: ['Mobile', 'Laptop'],
-    brand: allBrands,
-    availability: '',
+    category: [],
+    brand: [],
+    availability: null,
     price: 150000,
     rating: 0,
     discount: 0,
@@ -28,6 +28,18 @@ export const fetchProducts = createAsyncThunk(
   async () => {
     try {
       const response = await instance.get('/products');
+      return response.data;
+    } catch (error) {
+      return error.response.data;
+    }
+  }
+);
+
+export const fetchProductDetails = createAsyncThunk(
+  `products/fetchItemDetails`,
+  async (id) => {
+    try {
+      const response = await instance.get(`/products/${id}`)
       return response.data;
     } catch (error) {
       return error.response.data;
