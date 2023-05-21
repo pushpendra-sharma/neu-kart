@@ -6,6 +6,8 @@ import {
   filterByCategory,
 } from '../redux/features/productSlice';
 import '../styles/Filter.css';
+import ClearButton from './ClearButton';
+
 const CheckBox = props => {
   const { options, title, id } = props;
 
@@ -29,6 +31,10 @@ const CheckBox = props => {
     <div className='filter-container'>
       <p className='filter-criteria-title-container'>
         <span className='filter-criteria-title'>{title}</span>
+        <ClearButton
+          callback={() => setvalues([])}
+          active={values.length > 0}
+        />
       </p>
       <ul className='list-non-bullet'>
         {options.map(item => (
@@ -37,7 +43,7 @@ const CheckBox = props => {
               type='checkbox'
               id={item.label}
               className='check-input'
-              // checked
+              checked={values.includes(item.value)}
               onChange={e => setCheckBoxValues(e)}
               value={item.value}
             />
