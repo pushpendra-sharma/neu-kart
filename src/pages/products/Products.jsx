@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Navigate } from 'react-router';
 import { useNavigate } from 'react-router-dom';
@@ -7,54 +6,24 @@ import { Puff } from 'react-loader-spinner';
 import './Products.css';
 import { Card, Filter } from '../../components';
 import { allProductsSelector, filtersBySlector } from '../../redux/selectors';
+import { filterProducts } from '../../utils/filter';
 
 const Products = ({ error, loading }) => {
   const navigate = useNavigate();
   const allProducts = useSelector(allProductsSelector);
-  const { category, brand, availability, price, rating, discount } =
-    useSelector(filtersBySlector);
+  const filters = useSelector(filtersBySlector);
 
-  const [array, setArray] = useState(allProducts);
+  const filteredProducts = filterProducts(allProducts, filters);
 
-  useEffect(() => {
-    if (category.length) {
-      setArray(allProducts.filter(item => category.includes(item.category)));
-    } else setArray(allProducts);
-  }, [category, allProducts]);
-
-  useEffect(() => {
-    if (brand.length) {
-      setArray(allProducts.filter(item => brand.includes(item.company)));
-    } else setArray(allProducts);
-  }, [brand, allProducts]);
-
-  useEffect(() => {
-    setArray(allProducts.filter(item => item.rating >= rating));
-  }, [rating, allProducts]);
-
-  useEffect(() => {
-    setArray(allProducts.filter(item => item.discount >= discount));
-  }, [discount, allProducts]);
-
-  useEffect(() => {
-    if (availability === 'yes')
-      setArray(allProducts.filter(item => item.availability));
-    else setArray(allProducts);
-  }, [availability, allProducts]);
-
-  useEffect(() => {
-    setArray(allProducts.filter(item => item.price <= price));
-  }, [price, allProducts]);
-
-  const sortFromRedux = useSelector(state => state.products.sortBy);
-  if (sortFromRedux === 'priceHighToLow') {
-    array.sort((item1, item2) => item2.price - item1.price);
-  } else if (sortFromRedux === 'priceLowToHigh') {
-    array.sort((item1, item2) => item1.price - item2.price);
-  } else if (sortFromRedux === 'ratingLowToHigh') {
-    array.sort((item1, item2) => item1.rating - item2.rating);
-  } else if (sortFromRedux === 'ratingHighToLow') {
-    array.sort((item1, item2) => item2.rating - item1.rating);
+  const sortBy = useSelector(state => state.products.sortBy);
+  if (sortBy === 'priceHighToLow') {
+    filteredProducts.sort((item1, item2) => item2.price - item1.price);
+  } else if (sortBy === 'priceLowToHigh') {
+    filteredProducts.sort((item1, item2) => item1.price - item2.price);
+  } else if (sortBy === 'ratingLowToHigh') {
+    filteredProducts.sort((item1, item2) => item1.rating - item2.rating);
+  } else if (sortBy === 'ratingHighToLow') {
+    filteredProducts.sort((item1, item2) => item2.rating - item1.rating);
   }
 
   return (
@@ -79,9 +48,9 @@ const Products = ({ error, loading }) => {
             </div>
           ) : (
             <div className='products-filtered'>
-              {array.length > 0 ? (
+              {filteredProducts.length > 0 ? (
                 <>
-                  {array.map(item => (
+                  {filteredProducts.map(item => (
                     <div
                       className='product-link'
                       onClick={() => navigate(`/product/${item._id}`)}

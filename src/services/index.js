@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://neukart-api.up.railway.app/';
+const BASE_URL = 'https://neukart-api.onrender.com/';
 
 export const instance = axios.create({
   baseURL: BASE_URL,

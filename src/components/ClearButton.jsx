@@ -1,33 +1,22 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
 import '../styles/Filter.css';
 
-const ClearButton = props => {
-  const { label, active } = props;
-
-  const [isActive, setIsActive] = useState(active);
-
-  return (
-    <>
-      {isActive && (
-        <span className='clear-text' onClick={() => setIsActive(!isActive)}>
-          {label}
-        </span>
-      )}
-    </>
-  );
-};
+const ClearButton = ({ label, active, callback }) =>
+  active ? (
+    <span className='clear-text' onClick={callback}>
+      {label}
+    </span>
+  ) : null;
 
 ClearButton.propTypes = {
   label: PropTypes.string,
-  id: PropTypes.string,
   active: PropTypes.bool,
+  callback: PropTypes.func,
 };
 
 ClearButton.defaultProps = {
-  id: 'clearButton',
   label: 'Clear',
-  visible: false,
+  active: false,
 };
 
 export default ClearButton;
