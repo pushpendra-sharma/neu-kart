@@ -1,11 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { laptopBrands, mobileBrands } from '../../utils/utils';
 import { instance } from '../../services';
-
-const allBrands = [
-  ...mobileBrands.map(item => item.value),
-  ...laptopBrands.map(item => item.value),
-];
 
 const initialProductState = {
   loading: false,
@@ -37,9 +31,9 @@ export const fetchProducts = createAsyncThunk(
 
 export const fetchProductDetails = createAsyncThunk(
   `products/fetchItemDetails`,
-  async (id) => {
+  async id => {
     try {
-      const response = await instance.get(`/products/${id}`)
+      const response = await instance.get(`/products/${id}`);
       return response.data;
     } catch (error) {
       return error.response.data;
@@ -74,9 +68,9 @@ const productSlice = createSlice({
     },
     clearFilters: state => {
       state.filterBy = {
-        category: ['Mobile', 'Laptop'],
-        brand: allBrands,
-        availability: 'All',
+        category: [],
+        brand: [],
+        availability: null,
         price: 150000,
         rating: 0,
         discount: 0,
@@ -101,6 +95,7 @@ const productSlice = createSlice({
 });
 
 export const {
+  clearFilters,
   filterByCategory,
   filterByBrand,
   filterByAvailability,

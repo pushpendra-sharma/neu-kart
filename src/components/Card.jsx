@@ -1,8 +1,9 @@
+import { memo } from 'react';
 import PropTypes from 'prop-types';
 import '../styles/Card.css';
 import { CartButton, WishListButton } from './';
 
-const Card = props => {
+const Card = memo(function Card(props) {
   const {
     productName,
     features,
@@ -41,7 +42,7 @@ const Card = props => {
       <CartButton id={_id} availability={availability} type='add' />
     </div>
   );
-};
+});
 
 Card.propTypes = {
   data: PropTypes.object,
